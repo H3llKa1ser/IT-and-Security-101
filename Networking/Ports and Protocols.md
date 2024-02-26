@@ -11,3 +11,52 @@
 ##### 2) Registered ports (1024–49151): These ports are often associated with proprietary applications from vendors and developers. While they are officially approved by the Internet Assigned Numbers Authority (IANA), in practice many vendors simply implement a port of their choosing. Examples include Remote Authentication Dial-In User Service (RADIUS) authentication (1812), Microsoft SQL Server (1433/1434) and the Docker REST API (2375/2376).
 
 ##### 3) Dynamic or private ports (49152–65535): Whenever a service is requested that is associated with well-known or registered ports, those services will respond with a dynamic port that is used for that session and then released.
+
+# Secure Ports
+
+### Some network protocols transmit information in clear text, meaning it is not encrypted and should not be used. Clear text information is subject to network sniffing. This tactic uses software to inspect packets of data as they travel across the network and extract text such as usernames and passwords. Network sniffing could also reveal the content of documents and other files if they are sent via insecure protocols
+
+### Examples:
+
+#### 1) FTP port 21
+
+#### 2) Telnet port 23
+
+#### 3) SMTP port 25
+
+#### 4) Time port 37
+
+#### 5) DNS port 53
+
+#### 6) HTTP port 80
+
+#### 7) IMAP port 143
+
+#### 8) SNMP port 161/162
+
+#### 9) SMB port 445
+
+#### 10) LDAP port 389
+
+## Secure Alternatives:
+
+#### 1) SFTP port 22
+
+#### 2) SSH port 22
+
+#### 3) SMTP port 587 (with TLS)
+
+#### 4) NTP port 123
+
+#### 5) DoT port 853 (DNS over TLS)
+
+#### 6) HTTPS port 443
+
+#### 7) IMAP port 993 IMAP for SSL/TLS
+
+#### 8) SNMPv3 port 161/162
+
+#### 9) NFS port 2049
+
+#### 10) LDAPS port 636
+
