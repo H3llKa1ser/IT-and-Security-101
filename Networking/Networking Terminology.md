@@ -34,3 +34,5 @@
 
 #### 3) Internet Protocol (IP) Address: While MAC addresses are generally assigned in the firmware of the interface, IP hosts associate that address with a unique logical address. This logical IP address represents the network interface within the network and can be useful to maintain communications when a physical device is swapped with new hardware. Examples are 192.168.1.1 and 2001:db8::ffff:0:1.
 
+#### 4) Broadcast: Broadcast transmission is a one-to-many (one-to-everyone) form of sending internet traffic.
+
