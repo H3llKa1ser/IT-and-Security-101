@@ -24,3 +24,30 @@
 
 ### Controls are implemented to protect against unauthorized changes to log information. Operational problems with the logging facility are often related to alterations to the messages that are recorded, log files being edited or deleted, and storage capacity of log file media being exceeded. Organizations must maintain adherence to retention policy for logs as prescribed by law, regulations and corporate governance. Since attackers want to hide the evidence of their attack, the organization’s policies and procedures should also address the preservation of original logs. Additionally, the logs contain valuable and sensitive information about the organization.  Appropriate measures must be taken to protect the log data from malicious use. 
 
+# Event Logging Best Practices
+
+### Different tools are used depending on whether the risk from the attack is from traffic coming into or leaving the infrastructure. Ingress monitoring refers to surveillance and assessment of all inbound communications traffic and access attempts. Devices and tools that offer logging and alerting opportunities for ingress monitoring include: 
+
+#### 1) Firewalls
+
+#### 2) Gateways
+
+#### 3) Remote authentication servers
+
+#### 4) IDS/IPS tools
+
+#### 5) SIEM solutions
+
+#### 6) Anti-malware solutions
+
+### Egress monitoring is used to regulate data leaving the organization’s IT environment. The term currently used in conjunction with this effort is data loss prevention (DLP) or data leak protection. The DLP solution should be deployed so that it can inspect all forms of data leaving the organization, including: 
+
+#### 1) Email (Content and attachments)
+
+#### 2) Copy to portable media
+
+#### 3) File Transfer Protocol (FTP)
+
+#### 4) Posting to web pages/websites
+
+#### 5) Applications/application programming interfaces (APIs)
