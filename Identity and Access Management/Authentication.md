@@ -132,7 +132,7 @@
 
 ### Biometrics
 
-#### 1) Physiological (Static): Should not significantly change over time. Bound to a user's physiological traits. E.G. Fingerprint, hand geometry, iris, retina, etc
+#### 1) Physiological (Static): Should not significantly change over time. Bound to a user's physiological traits. E.G. Fingerprint, hand geometry, iris, retina, vascular, hand, etc
 
 #### 2) Behavior-based (Dynamic): Based on behavioral traits. E.G. Voice, signature, keyboard cadence, etc.
 
