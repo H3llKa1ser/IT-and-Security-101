@@ -13,3 +13,5 @@
 ### The level at which the two meet is called Crossover Error Rate (CER). The lower the number, the more accurate the system.
 
 ## TIP: Iris scans are the most accurate!
+
+## BONUS: Type 2 error is FAR more dangerous than type 1 (Pun intended)
