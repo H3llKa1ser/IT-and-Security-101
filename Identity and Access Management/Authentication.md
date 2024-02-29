@@ -112,6 +112,8 @@
 
 #### 5) Value is sent to server
 
+## Challenge Response Token: The authentication server encrypts a challenge with a public key, the device proves it possesses a copy of the matching private key by providing the decrypted challenge
+
 ## Memory Cards
 
 #### 1) Hold information, does NOT process
@@ -121,6 +123,10 @@
 #### 3) A credit card or ATM card is a type of memory card, so is a key/swipe card
 
 #### 4) Usually insecure, easily copied
+
+## Contant cards: Need to be inserted into a smart card reader with a direct connection. E.G. Credit card with a chip reader
+
+## Contactless cards: Requires close proximity to a reader. Both have antennae and use radio frequency. E.G. Apple Pay, Tap to pay
 
 ## Type 3: Something you are/do
 
