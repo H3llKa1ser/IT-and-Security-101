@@ -15,3 +15,5 @@
 #### 5) Deployment
 
 #### 6) Maintenance
+
+## Remember! It's a one way methodology. Once you go down, you can't go up!
