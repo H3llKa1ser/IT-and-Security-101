@@ -92,6 +92,26 @@
 
 #### 7) More complex than synchronous
 
+## Static Password Tokens
+
+### The device contains a password that is physically hidden (not visible to the possesor) but that is transmitted for each authentication
+
+## Synchronous Dynamic Password Token:
+
+### A timer is used to rotate through various combinations produced by a cryptographic algorithm. The token and the authentication server must have synchronized clocks.
+
+## Asynchronous Password Token: A one-time password is generated without the use of a clock, from either a one-time pad or a cryptographic algorithm
+
+#### 1) Challenge value displayed on computer
+
+#### 2) User enters challenge value into token device
+
+#### 3) Token presents a different value to the user
+
+#### 4) User gives value to computer
+
+#### 5) Value is sent to server
+
 ## Memory Cards
 
 #### 1) Hold information, does NOT process
