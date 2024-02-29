@@ -8,7 +8,7 @@
 
 ### Allows for Single Sign-On
 
-### Uses ysmmetric encryption to verify identifications
+### Uses symmetric encryption to verify identifications
 
 ### Avoids replay attacks
 
