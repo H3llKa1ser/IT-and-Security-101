@@ -151,3 +151,25 @@
 #### 5) Cost/benefit analysis
 
 #### 6) No way to revoke biometrics
+
+# Multifactor Authentication (MFA)
+
+### Authentication consists of 3 categories as explained above:
+
+#### 1) Something you know
+
+#### 2) Something you have
+
+#### 3) Something you are
+
+### Multifactor authentication: ANY 2 of the 3 categories
+
+## Examples:
+
+### MFA = Password + smart card
+
+### NOT MFA = Retina scan + voice recognition (It's the same category so it is not classified as MFA)
+
+## Dual control (AKA Split-knowledge)
+
+### Requiring 2 people to perform an action
