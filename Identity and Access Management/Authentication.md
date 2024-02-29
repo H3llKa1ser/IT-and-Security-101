@@ -112,3 +112,16 @@
 
 ### Even though these can be modified temporarily, they are very difficult to modify for any significant length of time.
 
+### Biometric concerns:
+
+#### 1) User acceptance
+
+#### 2) Many users feel biometrics are intrusive
+
+#### 3) Retina scans can reveal healthcare information
+
+#### 4) Time for enrollment and verification can make users resistant
+
+#### 5) Cost/benefit analysis
+
+#### 6) No way to revoke biometrics
