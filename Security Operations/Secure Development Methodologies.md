@@ -60,6 +60,30 @@
 
 ### Designed to quickly build user interface components as requirements are gathered
 
+## Open Web Application Security Project (OWASP)
+
+### Provides a freely available listing of the top vulnerabilities found in web applications
+
+### Guidelines exist for developers in the following areas:
+
+#### 1) Authentication
+
+#### 2) Authorization
+
+#### 3) Session Management
+
+#### 4) Encryption of Sensitive Data
+
+#### 5) Input Validation
+
+#### 6) Disallow Dynamic Queries
+
+#### 7) Out-of-band Confirmations
+
+#### 8) Avoid Exposing System Information
+
+#### 9) Error Handling
+
 ## Agile 
 
 ### Relies on feedback from application users and development teams as their primary control mechanism
