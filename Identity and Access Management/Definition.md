@@ -9,3 +9,13 @@
 #### 3) Authentication
 
 #### 4) Auditing
+
+### Per ISC2, Identity and Access Management solutions "focus on harmonizing the provisioning of users and managing their access accross multiple systems with different native access control systems".
+
+## Identity Management
+
+### Controls the life cycle for all accounts in a system
+
+## Access Management
+
+### Controls the assignment of rights/privileges to those accounts
