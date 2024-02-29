@@ -25,3 +25,13 @@
 #### 5) Rule-Based Access Control (RuBAC)
 
 #### 6) Non-Discretionary Access Control (NDAC)
+
+## Authorization principles
+
+### Default NO access (implicit deny) - Unless a subject is explicitly given access to an object, then they are implicitly denied access.
+
+### Principle of least privilege (Action)
+
+### Need to know (Data access)
+
+### Content-based VS Context-based
