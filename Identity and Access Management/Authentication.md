@@ -88,7 +88,7 @@
 
 #### 5) Token device returns a reply 
 
-#### 6) Only that specific user's token device could respond with th eexpected reply
+#### 6) Only that specific user's token device could respond with the expected reply
 
 #### 7) More complex than synchronous
 
