@@ -19,3 +19,15 @@
 ## Access Management
 
 ### Controls the assignment of rights/privileges to those accounts
+
+## Identity Proofing
+
+### Precedes the creation of a user account 
+
+### Not the same as authentication
+
+### Requires the prospective employee to prove their identity to the employer
+
+### Long before an employee is given a user account to identify with on the network, they have proven their identity to their employer
+
+#### 1) Collect evidence from the applicant -> 2) Verify the claimed identity exists -> 3) Verify the claimed identity belongs to the applicant
