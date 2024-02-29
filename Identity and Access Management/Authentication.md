@@ -111,4 +111,4 @@
 #### 2) Behavior-based (Dynamic): Based on behavioral traits. E.G. Voice, signature, keyboard cadence, etc.
 
 ### Even though these can be modified temporarily, they are very difficult to modify for any significant length of time.
-#### 2) 
+
