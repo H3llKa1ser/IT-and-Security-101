@@ -60,6 +60,13 @@
 
 ### Designed to quickly build user interface components as requirements are gathered
 
+
+## Agile 
+
+### Relies on feedback from application users and development teams as their primary control mechanism
+
+### TIP: You can go down or up or in a loop of the steps as many times as needed to.
+
 ## Open Web Application Security Project (OWASP)
 
 ### Provides a freely available listing of the top vulnerabilities found in web applications
@@ -83,9 +90,3 @@
 #### 8) Avoid Exposing System Information
 
 #### 9) Error Handling
-
-## Agile 
-
-### Relies on feedback from application users and development teams as their primary control mechanism
-
-### TIP: You can go down or up or in a loop of the steps as many times as needed to.
