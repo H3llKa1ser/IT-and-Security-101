@@ -29,3 +29,9 @@
 #### 6) Audit and Tracking
 
 #### 7) Emergence Management
+
+## Data Retention and Disposal
+
+### Shredding: Cutting documents into tiny pieces
+
+### Erasure or Reformatting: Removes the pointers to data so the OS can no longer see the data
