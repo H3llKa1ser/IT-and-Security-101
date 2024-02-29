@@ -51,3 +51,17 @@
 ### 6) Maintenance
 
 #### Bugs and vulnerabilities are patched when they arise
+
+## Spiral Model
+
+### Based on the waterfall development model, but adds a PDCA (Plan-Do-Check-Act) sequence at each stage of the progression
+
+## Rapid Application Development (RAD)
+
+### Designed to quickly build user interface components as requirements are gathered
+
+## Agile 
+
+### Relies on feedback from application users and development teams as their primary control mechanism
+
+### TIP: You can go down or up or in a loop of the steps as many times as needed to.
