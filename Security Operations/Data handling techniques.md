@@ -35,3 +35,7 @@
 ### Shredding: Cutting documents into tiny pieces
 
 ### Erasure or Reformatting: Removes the pointers to data so the OS can no longer see the data
+
+### Disk Wiping/Overwriting: Writing over existing data with a stream or zeros, ones, or both
+
+### Degaussing: Erases magnetic data on a disk or tape using a degausser
