@@ -11,3 +11,15 @@
 #### 3) Security Officer
 
 #### 4) Authorizing Official
+
+### System security plans need to include:
+
+#### 1) People and their roles
+
+#### 2) Contacts
+
+#### 3) Requirements
+
+#### 4) Controls
+
+#### 5) Procedures
