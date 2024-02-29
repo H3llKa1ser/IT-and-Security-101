@@ -17,3 +17,37 @@
 #### 6) Maintenance
 
 ## Remember! It's a one way methodology. Once you go down, you can't go up!
+
+## Waterfall Steps in detail:
+
+### 1) Requirements Gathering and Analysis
+
+#### Functional and Non-Functional Requirements are documented
+
+#### Security requirements are defined
+
+### 2) System Design
+
+#### Requirements are turned into flow charts and narratives
+
+#### Design walkthroughs are held to ensure all requirements are there
+
+### 3) Implementation
+
+#### Programming is done and modules are created
+
+#### The security practitioner is responsible for the correct implementation of security concepts
+
+### 4) Integration
+
+#### Modules are combined and tested
+
+### 5) Deployment of System
+
+#### The application is sent to a controlled environment for quality assurance
+
+#### The application is then put into production
+
+### 6) Maintenance
+
+#### Bugs and vulnerabilities are patched when they arise
