@@ -25,3 +25,17 @@
 #### 6) Detective
 
 #### 7) Recovery
+
+### Directive controls specify acceptable rules, behavior.
+
+### Deterrent controls discourage people from violating security directions
+
+### Preventive controls stop a security incident
+
+### Compensating controls are substitute controls for a loss of primary controls
+
+### Corrective controls are implemented to mitigate any damage
+
+### Detective controls signal a warning when something has been breached
+
+### Recovery controls restore conditions back to normal
