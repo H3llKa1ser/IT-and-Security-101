@@ -26,3 +26,14 @@
 
 ### It is important to remember that plaintext can be anything—much of which is not readable to humans in the first place.
 
+### Security services provided by cryptography
+
+#### 1) Privacy: Prevents unauthorized disclosure of information
+
+#### 2) Authenticity: Verifies the claimed identity
+
+#### 3) Integrity: Detects modification or corruption
+
+#### 4) Non-repudiation: Combines authenticity and integrity. A sender cannot dispute having sent a message, nor its contents.
+
+## PLAIN TEXT + INITIALIZATION VECTOR + ALGORITHM (CIPHER) + KEY = CIPHER TEXT
