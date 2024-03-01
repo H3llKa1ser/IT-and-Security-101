@@ -36,3 +36,20 @@
 
 ### An example of symmetric encryption is a substitution cipher, which involves the simple process of substituting letters for other letters, or more appropriately, substituting bits for other bits, based upon a cryptovariable. These ciphers involve replacing each letter of the plaintext with another that may be further down the alphabet.
 
+### Symmetric Ciphers are either:
+
+#### 1) Stream (One bit at a time)
+
+#### 2) Block (Chunks of data)
+
+# Symmetric Encryption: Stream VS Block
+
+### Stream ciphers encrypt one bit (up to one byte) of data at a time
+
+#### 1) Transposition, Substitution, XOR
+
+#### 2) Very fast and efficient
+
+#### 3) Not as secure
+
+### Block ciphers chunk data into blocks. Each chunk goes through a series of math functions called S-boxes
