@@ -15,3 +15,9 @@
 ### A sniffer plugged into a switch would have very little traffic to examine unless the port is set to port scan/mirroring. Broadcast traffic still is passed throughout the enite network.
 
 ### ** Bridges were predecessors to switches and operate at layer 2 **
+
+## Routers (Layer 3)
+
+### Layer 3 device that isolates traffic into separate networks (or subnetworks) so that broadcast traffic is isolated and is not passed from network to network.
+
+### The router uses IP addressses to identify each network and to route between them. The biggest drawback to using a router is that is EXPENSIVE.
