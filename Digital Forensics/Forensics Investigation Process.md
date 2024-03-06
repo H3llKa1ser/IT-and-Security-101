@@ -55,3 +55,41 @@
 ### 8) Work from volatile to persistent evidence
 
 ### 9) DO NOT run any programs or open any files on the infected system until a forensic copy of the disk has been made!!!
+
+## 4) Examination
+
+### Look for signatures of known attacks
+
+### Review audit logs
+
+### Hidden data recovery
+
+## 5) Analysis
+
+### Primary Image (original) VS Working Image (copy)
+
+### Working Image should be bit by bit copy of the original
+
+### Both copies must be hashed and the working copy should be write-protected
+
+### What is the root cause?
+
+### What files were altereed/installed?
+
+### What communications channels were opened?
+
+## 6) Presentation
+
+### Interpreting the results of the investigation and presenting the findings in an appropriate format
+
+### Documentation
+
+### Expert Testimony
+
+## 7) Decision
+
+### What is the result of the investigation?
+
+### Suspects?
+
+### Corrective Actions?
