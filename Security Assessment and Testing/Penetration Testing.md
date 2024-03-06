@@ -17,3 +17,15 @@
 ### Emulates the same methods attackers would use
 
 ### Penetration testing should only be conducted with senior management's approval in writing
+
+# Penetration Testing Steps
+
+### 1) Discovery: Footprinting and gathering information about the target
+
+### 2) Enumeration: Performing port scans and resource identification methods
+
+### 3) Vulnerability mapping: Identifying vulnerabilities in identified systems and resources
+
+### 4) Exploitation: Attempting to gain unauthorized access by exploiting vulnerabilities
+
+### 5) Report to Management: Delivering to management documentation of test findings along with suggested countermeasures
