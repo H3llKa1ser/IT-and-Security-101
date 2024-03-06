@@ -21,3 +21,7 @@
 ### Layer 3 device that isolates traffic into separate networks (or subnetworks) so that broadcast traffic is isolated and is not passed from network to network.
 
 ### The router uses IP addressses to identify each network and to route between them. The biggest drawback to using a router is that is EXPENSIVE.
+
+## VLANs
+
+### Usually implemented on Layer 3 switches and provide the services of a router, but at a much lower cost and with easier configuration. Routers are now frequently used just for WAN connectivity.
