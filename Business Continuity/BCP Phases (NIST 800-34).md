@@ -77,3 +77,43 @@
 ##### Outsourcing
 
 ##### Rolling hot site
+
+### Plan 5 Phases
+
+#### 1) Very the plan for accuracy and completeness
+
+#### 2) Should happen once per year, or as the result of a major change
+
+#### 3) The purpose of testing is to improve the response (NEVER TO FIND FAULT OR BLAME)
+
+#### 4) Senior Management is responsible for ensuring the plans are tested
+
+#### 5) The type of testing is based upon the criticality of the organization, resources available and risk tolerance
+
+### Types of tests:
+
+#### 1) Checklist test
+
+##### Copies of plan distributed to different departments
+
+##### Functional managers overview
+
+#### 2) Structured Walk-Through (Table-Top) test
+
+##### Representatives from each department go over the plan
+
+#### 3) Simulation test
+
+##### Going through a disaster scenario
+
+##### Continues up to the actual relocation to an offsite facillity
+
+#### 4) Parallel test
+
+##### Systems moved to alternate site, and processing takes place there
+
+#### 5) Full-Interruption test
+
+##### Original site shutdown
+
+##### All processing moved to offsite facility
