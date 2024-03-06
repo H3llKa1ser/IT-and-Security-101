@@ -1,4 +1,4 @@
-# BCP Phase (NIST 800-34)
+# BCP Phases (NIST 800-34)
 
 ## 1) Project Initiation
 
@@ -59,3 +59,21 @@
 #### 4) Mean Time To Repair (MTTR)
 
 #### 5) Minimum Operating Requirements (MOR)
+
+### Plan 3 Phases
+
+#### 1) Facility Recovery
+
+##### Subscription Services
+
+##### Hot, warm, cold sites
+
+##### Reciprocal Agreements
+
+##### Others:
+
+##### Redundant/Mirrored site (partial or full)
+
+##### Outsourcing
+
+##### Rolling hot site
