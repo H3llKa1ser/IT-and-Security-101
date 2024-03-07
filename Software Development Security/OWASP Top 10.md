@@ -14,7 +14,7 @@
 
 ### Regular security audits and code reviews are a must to identify and fix access control issues, and multi-factor authentication should be enforced to limit unauthorized access.
 
-## 2) Cryptograhic Failures
+## 2) Cryptographic Failures
 
 ### Cryptography is used to protect highly sensitive data like credit card numbers and PII while it’s in transit, but it can fail due to factors like weak encryption algorithms or short encryption keys which can make it easier for attackers to decrypt sensitive data.
 
