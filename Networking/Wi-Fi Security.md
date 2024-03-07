@@ -31,3 +31,13 @@
 ### 3) NOT BACKWARDS COMPATIBLE
 
 ## * WPA and WPA 2 Enterprise uses 802.1x authentication to have individual users (RADIUS) AKA (Remote Authentication Dial-In User Service)
+
+# Wireless Security Problems
+
+### 1) Unauthorized Access
+
+### 2) Sniffing
+
+### 3) War Driving
+
+### 4) Unaothorized Access Points (MiTM)
