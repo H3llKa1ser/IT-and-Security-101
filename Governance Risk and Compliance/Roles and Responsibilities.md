@@ -99,3 +99,15 @@
 ### If internal auditing is in place, auditors should not report to the head of a business unit, but rather to the Chief Operating Officer (COO) or some other entity without direct stake in result
 
 ### Auditors document and DO NOT MODIFY
+
+## Security Trainers
+
+### Must understand the risk management process
+
+### Develop appropriate training materials
+
+### Conduct security trainings and awareness programs catered to roles within the organization
+
+### Incorporate risk assessment into training programs to educate the end users
+
+### Encourage users to report violations
