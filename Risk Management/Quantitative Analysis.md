@@ -8,6 +8,16 @@
 
 ### Can't exist on its own. Quantitative analysis depends on qualitative information
 
+### More experience requireed with qualitative
+
+### Involves calculations to determine a dollar value associated with each risk event
+
+### Business decisions are made on this type of analysis
+
+### Goal is to the dollar value of a risk and use that amount to determine what the best control is for a particular asset
+
+### Necessary for a cost/benefit analysis
+
 ## Formulas and Terms
 
 ### 1) Asset Value (AV): Dollar figure that represents what the asset is worth to the organization
