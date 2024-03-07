@@ -6,3 +6,15 @@
 
 ### In a LAN, threat actors need to enter the physical space or immediate vicinity of the physical media itself. For wired networks, this can be done by placing sniffer taps onto cables, plugging in USB devices, or using other tools that require physical access to the network. By contrast, wireless media intrusions can happen at a distance. 
 
+
+#### 1) Mobility: A wireless communications system allows users to conduct business from anywhere without
+
+#### 2) Reachability: Wireless communication systems enable people to stay connected and be reachable, regardless of their location.
+
+### 3) Simplicity: Wireless communication systems are easy and fast to deploy in comparison of cabled network. CAUTION!: EASE OF USE IS OFTEN THE ENEMY OF SECURITY!
+
+### 4) Maintainability: In a wireless system, you do not have to spend too much cost and time to maintain the network setup
+
+### 5) Roaming Services: Using a wireless network system, you can provide service anywhere anytime including train, buses, airplanes etc.
+
+### 6) Additional Services: Wireless communication systems provide various smart services like SMS and MMS
