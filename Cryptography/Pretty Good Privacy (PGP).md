@@ -9,3 +9,5 @@
 ### Passphrases instead of passwords
 
 ### Learned keys are stored in a file called the keyring
+
+### Uses IDEA Algorithm (International Data Encryption Algorithm)
