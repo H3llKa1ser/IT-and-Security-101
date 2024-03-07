@@ -31,3 +31,11 @@
 #### 1) Very low: 1
 
 ## Use the appropriate formula to make a qualitative analysis based on the formula you used.
+
+# Qualitative Assessments
+
+### Assess risks based on subjective input
+
+### Uses terms like high, medium, low
+
+### Inexpensive and quick way to begin the prioritization and ranking of risks
