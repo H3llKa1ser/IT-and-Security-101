@@ -1,5 +1,9 @@
 # Qualitative Analysis
 
+### Subjective analysis to help prioritize probability and impact of risk events
+
+### May use Delphi technique (anonymous input)
+
 ## Example formula: PROBABILITY * IMPACT
 
 ### Probability:
