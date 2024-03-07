@@ -1,5 +1,13 @@
 # Quantitative Analysis
 
+### Providing a dollar value to a particular risk event
+
+### Much more sophisticated in nature a quantitative analysis is much more difficult and requires a special skill set
+
+### Business decisions are made on a quantitative analysis
+
+### Can't exist on its own. Quantitative analysis depends on qualitative information
+
 ## Formulas and Terms
 
 ### 1) Asset Value (AV): Dollar figure that represents what the asset is worth to the organization
