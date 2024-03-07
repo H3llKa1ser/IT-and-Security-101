@@ -1,6 +1,6 @@
 # Intellectual Property Law
 
-### Protecting products on the mind
+### Protecting products of the mind
 
 ### Company must take steps to protect resources covered by these laws or these laws may not protect them
 
