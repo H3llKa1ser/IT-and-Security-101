@@ -19,3 +19,17 @@
 #### 4) Regulation Compliance: Performed to confirm compliance with security aspects of regulations
 
 #### 5) Ordered: Performed when commanded by court
+
+### Auditors collect information about your security processes
+
+### Auditor's responsibilities are to:
+
+#### 1) Provide independent assurance about security systems
+
+#### 2) Analyze organizational security objectives
+
+#### 3) Analyze policies, standards, baselines, procedures and guidelines
+
+#### 4) Analyze the effectiveness of controls
+
+#### 5) Stating and explaining the scope of the system
