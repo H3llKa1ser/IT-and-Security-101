@@ -6,7 +6,7 @@
 
 #### 1) SOC 1: Pertains to FINANCIAL controls
 
-#### 2) SOC 2: Pertains to TRUST SERVICES. (Security, Availability, Confidentiality, Process Integrity and Privacr) (Existing Customers)
+#### 2) SOC 2: Pertains to TRUST SERVICES. (Security, Availability, Confidentiality, Process Integrity and Privacy) (Existing Customers)
 
 #### 3) SOC 3: Also pertains to trust services (Publicly available information)
  
