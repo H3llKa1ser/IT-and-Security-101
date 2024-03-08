@@ -7,3 +7,11 @@
 ### 3) Pre-Action systems: Incorporates a detection system. Water is held back until the detectors are activated.
 
 ### 4) Deluge systems: Operates the same as the Pre-Action system except the sprinkler heads are in the open position.
+
+### Water solutions are good for large physical areas but not for computer equipment.
+
+### For computer equipment, use gas fire suppression systems:
+
+#### 1) Aero-K: An aerosol of microscopic potassium compounds and uses multiple fire detectors
+
+#### 2) FM-200: A colorless, liquified compressed gas
