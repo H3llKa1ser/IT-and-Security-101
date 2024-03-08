@@ -9,3 +9,7 @@
 ### 4) Anti-passback: A strategy where a person must present a credential to enter AND exit a facility
 
 ### 5) Turnstiles and mantraps
+
+### 6) Rim Lock: A lock mounted on the surface of the door
+
+### 7) Mortise Lock: A lock that is built into the edge of the door
