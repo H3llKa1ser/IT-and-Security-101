@@ -55,3 +55,33 @@
 ## CONS
 
 #### 1) An inaccurate picture of the network is produced
+
+## Grey box testing
+
+### Involves giving some information to the penetration testing team
+
+### Organizations use this approach when they want the focus of the testing to be on accessing system and not information discovery
+
+## PROS
+
+#### 1) Combines benefits of white and black box testing
+
+#### 2) Allows for focused testing scenarios
+
+## CONS
+
+#### 1) Testing coverage may be limited
+
+## Black box testing
+
+### Testers generally perform unannounced tests that even security and IT staff may not know about
+
+### The objective is to get into whatever they can, without causing harm
+
+## PROS
+
+#### 1) A good look of the organization's true responses
+
+## CONS
+
+#### 1) Staff might get their feelings hurt (?)
