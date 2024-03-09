@@ -36,10 +36,10 @@
 
 ### 1) Electronic Code Book (ECB): Each block is encrypted independently 
 
-### 2) Cipher Block Chaining: The result of encrypting one block of data is fed back into the process to encrypt the next block
+### 2) Cipher Block Chaining (CBC): The result of encrypting one block of data is fed back into the process (IV) to encrypt the next block
 
-### 3) Cipher Feedback: Each block of keystream comes from encrypting the previous block of ciphertext
+### 3) Cipher Feedback (CFB): Each block of keystream comes from encrypting the previous block of ciphertext
 
-### 4) Output feedback: The keystream is generated independently of the message
+### 4) Output feedback (OFB): The keystream is generated independently of the message
 
-### 5) Counter: Uses the formula Encrypt (Base+N) as a keystream generator where Base is a starting 64 bit number and N is a simple incrementing function
+### 5) Counter (CTR): Uses the formula Encrypt (Base+N) as a keystream generator where Base is a starting 64 bit number and N is a simple incrementing function
