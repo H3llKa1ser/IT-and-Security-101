@@ -1,6 +1,6 @@
 # Recovery Sites 
 
-### 1) Cold Site: A building with power, raised floors and utilities. No devices are available.
+### 1) Cold Site: A building with power, raised floors and utilities. No devices are available. (Cheapest option, but takes the longest to deploy)
 
 ### 2) Warm Site: Does not have computers but has peripherals such as disk drives, controllers and tape drives.
 
