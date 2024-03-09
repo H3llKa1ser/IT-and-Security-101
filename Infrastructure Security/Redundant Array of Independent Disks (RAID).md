@@ -18,3 +18,6 @@
 
 ## Striping: A data element is broken into multiple pieces, and a piece is distributed to each hard drive
 
+### RAID levels can be combined to gain benefits from both levels.
+
+### Example: RAID 0 and RAID 1 can be combined to have mirrored disks which are striped.
