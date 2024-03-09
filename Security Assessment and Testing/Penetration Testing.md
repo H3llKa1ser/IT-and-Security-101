@@ -30,7 +30,7 @@
 
 ### 5) Report to Management: Delivering to management documentation of test findings along with suggested countermeasures
 
-# Penetrattion testing modes:
+# Penetration testing modes:
 
 ### 1) White box
 
