@@ -34,7 +34,7 @@
 
 ## Block Cipher Modes
 
-### 1) Electronic Code Book: Each block is encrypted independently 
+### 1) Electronic Code Book (ECB): Each block is encrypted independently 
 
 ### 2) Cipher Block Chaining: The result of encrypting one block of data is fed back into the process to encrypt the next block
 
