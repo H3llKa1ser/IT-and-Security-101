@@ -4,9 +4,11 @@
 
 ### RAID - 1: Disk Mirroring = Provides redundancy but is often considered to be least efficient usage of space
 
-### RAID - 2: Disk striping is performed at the bit level. (NOT USED IN PRACTICE)
+### RAID - 2: Disk striping is performed at the bit level. Redundant but too power consuming. (NOT USED IN PRACTICE)
 
-### RAID - 3: Disk striping is performed at the byte level and uses a dedicated parity disk. (NOT USED IN PRACTICE)
+### RAID - 3: Disk striping is performed at the byte level and uses a dedicated parity disk. Redundant but too power consuming. (NOT USED IN PRACTICE)
+
+### RAID - 4: Disk striping at the block level and use a dedicated parity disk. (NOT USED IN PRACTICE)
 
 ### RAID - 5: Disk striping with Parity = Fault Tolerance + Speed
 
