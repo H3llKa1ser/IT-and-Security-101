@@ -1,6 +1,8 @@
 # Message Authentication Codes (MAC)
 
-## Integrity
+### A small block of data that is generated using a secret key and then appended to the message
+
+### Integrity
 
 ### Data could be modified:
 
@@ -15,6 +17,8 @@
 ### Digital Signatures: Can detect both malicious and accidental modification, but requires an overhead. Provides TRUE non-repudiation.
 
 ## Message + Symmetric Number + Hashing Algorithm = HMAC (Hashing Message Authentication Codes)
+
+### Cryptographic hash function that uses a symmetric key value and is used for data integrity and origin authentication
 
 ### Integrity and (reasonable) authenticity
 
