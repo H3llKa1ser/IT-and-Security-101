@@ -21,3 +21,15 @@
 ### Should be long "enough"
 
 ## Algorithm === Cipher
+
+### Key length: The size of the key, measured in bits or bytes
+
+#### 1) The security of an algorithm CANNOT EXCEED its key length
+
+#### 2) The key's length is distinct from its cryptographic security
+
+### Block Size: The size of the block used in block ciphers
+
+#### 1) Blocks are fixed lengths, padding is sometimes necessary!
+
+#### 2) Block size is directly related to security of the key!
