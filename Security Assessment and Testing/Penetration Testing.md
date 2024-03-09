@@ -29,3 +29,11 @@
 ### 4) Exploitation: Attempting to gain unauthorized access by exploiting vulnerabilities
 
 ### 5) Report to Management: Delivering to management documentation of test findings along with suggested countermeasures
+
+# Penetrattion testing modes:
+
+### 1) White box
+
+### 2) Grey box
+
+### 3) Black box
