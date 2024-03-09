@@ -37,3 +37,21 @@
 ### 2) Grey box
 
 ### 3) Black box
+
+## White box testing
+
+### The testers perform tests with the knowledge of the security and IT staff
+
+### They are given network blueprints, planned test times, and assistance from the organization
+
+## PROS
+
+#### 1) Good support from the organization 
+
+#### 2) Fixes can occur quicker
+
+#### 3) Good for testing incident response procedures
+
+## CONS
+
+#### 1) An inaccurate picture of the network is produced
