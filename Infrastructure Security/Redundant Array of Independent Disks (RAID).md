@@ -6,7 +6,7 @@
 
 ### RAID - 2: Disk striping is performed at the bit level. (NOT USED IN PRACTICE)
 
-### RAID - 3: Disk striping is perfomred at the byte level and uses a dedicated parity disk. (NOT USED IN PRACTICE)
+### RAID - 3: Disk striping is performed at the byte level and uses a dedicated parity disk. (NOT USED IN PRACTICE)
 
 ### RAID - 5: Disk striping with Parity = Fault Tolerance + Speed
 
