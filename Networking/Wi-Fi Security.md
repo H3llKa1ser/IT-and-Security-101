@@ -41,3 +41,11 @@
 ### 3) War Driving
 
 ### 4) Unaothorized Access Points (MiTM)
+
+## War Driving
+
+### The act of searching for wireless networks while driving around
+
+## War Dialing
+
+### Attemps to locate unauthorized modems connected to computers that are connected to networks. When a specialized program is used to scan a list of telephone numbers to search for computers for the purpose of hacking.
