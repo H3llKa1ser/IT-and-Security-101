@@ -39,8 +39,16 @@
 ### An incident occurred at the University of Florida many years ago, where a very reputable software source, Windows 2000 or Millennium, was provided to 50,000 students via CD-ROMs, and the copies were compromised. The problems were detected when the digests did not match on a distribution file.
 
 
+## Birthday Paradox
 
+### >50% chance 2 people share a birthday within a group of 23 people
 
-### 
+#### (n(n-1)/2)
 
-### 
+#### Hashes MUST NOT be susceptible to this
+
+## Salting
+
+### Random data used as an additional input to a hashing function
+
+### Prevents dictionary attacks and rainbow table attacks
