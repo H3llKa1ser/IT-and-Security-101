@@ -27,3 +27,13 @@
 ### 13) Replay attack: Occurs when an attacker intercepts authentication information and replays the information to gain access to a security system.
 
 ### 14) Factoring attacks: Developed to break the RSA algorithm. Tries to break down large prime numbers through factoring.
+
+### 15) Reverse Engineering: A product is reverse engineered to find weaknesses in the system or gain information.
+
+### 16) Implementation Attacks: Popular due to ease on system elements outside of the algorithm. 
+
+### 17) Fault analysis: Attempts to force the system into an error state to gain erroneous results.
+
+### 18) Side-channel analysis: Uses information that has been gathered to uncover sensitive data or processing functions.
+
+### 19) Probing attacks: Attempts to watch the circuitry surrounding the cryptographic module hoping that new components will disclose information.
