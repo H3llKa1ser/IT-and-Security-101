@@ -17,3 +17,7 @@
 ### 8) Algebraic attack: Exploits vulnerabilities within the intrinsic algebraic structure of mathematical functions
 
 ### 9) Rainbow table: A lookup table of sorted hash outputs. Hash values are saved to refer to at a later time
+
+### 10) Frequency analysis: Used to identify weaknesses within cryptosystems by locating patterns in resulting ciphertext. Works well with other types of attacks.
+
+### 11) Birthday attack: Attack that exploits the mathematics behind the birthday problem in the probability theory forces collisions within hash functions.
