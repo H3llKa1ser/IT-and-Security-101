@@ -25,3 +25,5 @@
 ### 12) Dictionary attack: Encrypts all of the words in a dictionary and checks if the hash matches the password hash.
 
 ### 13) Replay attack: Occurs when an attacker intercepts authentication information and replays the information to gain access to a security system.
+
+### 14) Factoring attacks: Developed to break the RSA algorithm. Tries to break down large prime numbers through factoring.
