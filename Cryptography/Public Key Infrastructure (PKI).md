@@ -1,5 +1,15 @@
 # Public Key Infrastructure (PKI)
 
+### A set of system, software and communication protocols required for public key cryptography
+
+### The primary purposes are:
+
+#### 1) Publish public keys/certificates
+
+#### 2) Certify that a key is tied to an individual or entity
+
+#### 3) Provide verification of the validity of a public key
+
 ## Certificates
 
 ### X.509 v.4 standard
