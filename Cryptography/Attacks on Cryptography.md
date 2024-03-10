@@ -15,3 +15,5 @@
 ### 7) Linear cryptanalysis: A known plaintext attack that uses liner approximations to describe the behavior of the block cipher
 
 ### 8) Algebraic attack: Exploits vulnerabilities within the intrinsic algebraic structure of mathematical functions
+
+### 9) Rainbow table: A lookup table of sorted hash outputs. Hash values are saved to refer to at a later time
