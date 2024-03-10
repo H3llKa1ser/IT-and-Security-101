@@ -18,4 +18,4 @@
 
 #### 2) Randomness: The randomness of zeroes and ones
 
-#### 3) Key Length: The longer the key, the more difficut it is
+#### 3) Key Length: The longer the key, the more difficult it is
