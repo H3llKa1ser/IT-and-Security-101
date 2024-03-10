@@ -12,9 +12,9 @@
 
 # Key Distribution and Management
 
-### Secure keys depend on Automatic Key Generation, Randomness and Length
+### Secure keys depend on Automated Key Generation, Randomness and Length
 
-#### 1) Automatic Key Generation: Key Enforcement Policy
+#### 1) Automated Key Generation: Key Enforcement Policy
 
 #### 2) Randomness: The randomness of zeroes and ones
 
