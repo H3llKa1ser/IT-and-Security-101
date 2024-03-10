@@ -19,3 +19,9 @@
 #### 2) Randomness: The randomness of zeroes and ones
 
 #### 3) Key Length: The longer the key, the more difficult it is
+
+### Key Wrapping: The process of using key encrypting keys (KEK) to protect session keys.
+
+#### 1) Good for sending keys over an untrusted transport
+
+#### 2) Supports symmetric and asymmetric ciphers
