@@ -9,3 +9,9 @@
 ### 4) Chosen Ciphertext: An attacker can see whatever they want in plaintext or ciphertext. They have compromised a workstation. Sometimes called a lunchtime or midnight attack.
 
 ### 5) Meet In The Middle: These attacks are targeted towards algorithms like 3DES where there are multiple keys. An attacker tries to learn what each key does individually.
+
+### 6) Differential Cryptanalysis: Also called a side channel attack. This attack uses the study of how differences in an input can affect the resultant difference at the output
+
+### 7) Linear cryptanalysis: A known plaintext attack that uses liner approximations to describe the behavior of the block cipher
+
+### 8) Algebraic attack: Exploits vulnerabilities within the intrinsic algebraic structure of mathematical functions
