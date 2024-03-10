@@ -21,3 +21,7 @@
 ### 10) Frequency analysis: Used to identify weaknesses within cryptosystems by locating patterns in resulting ciphertext. Works well with other types of attacks.
 
 ### 11) Birthday attack: Attack that exploits the mathematics behind the birthday problem in the probability theory forces collisions within hash functions.
+
+### 12) Dictionary attack: Encrypts all of the words in a dictionary and checks if the hash matches the password hash.
+
+### 13) Replay attack: Occurs when an attacker intercepts authentication information and replays the information to gain access to a security system.
