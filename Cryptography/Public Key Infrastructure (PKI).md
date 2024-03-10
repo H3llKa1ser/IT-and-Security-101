@@ -20,13 +20,13 @@
 
 ### Digitally signed by a Certificate Authority 
 
-#### 1) Certificate Authority (CA)
+#### 1) Certificate Authority (CA): A component of a PKI that creates and maintains digital certificates throughout their lifecycles
 
-#### 2) Registration Authority (RA)
+#### 2) Registration Authority (RA): Verifies an entity's identity and determines whether they are entitled to have a public key certificate issued
 
 #### 3) Certificate Repository
 
-#### 4) Certificate Revocation List (CRL)
+#### 4) Certificate Revocation List (CRL): List that is maintained by the CA of a PKI that contains information revoked digital certificates
 
 ## Certificate Revocation
 
