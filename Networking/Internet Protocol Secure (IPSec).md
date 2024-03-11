@@ -16,11 +16,23 @@
 
 ## IPSec Sub-Protocols
 
-### 1) Authentication Header (AH): Provides integrity, authrnticity and non-repudiation through the use of an ICV (Integrity Check Value).
+### 1) Authentication Header (AH): Used to identify the sender and ensure the transmitteed data has not been altered. Uses hashes and sequence numbers.
+
+### Provides integrity, authenticity and non-repudiation through the use of an ICV (Integrity Check Value).
 
 ### The ICV is run on the entire packet (header, data ,trailer) except for particular fields, in the header that are dynamic (like TTL, etc). NO CONFIDENTIALITY!
 
-### 2) Encapsulating Security Payload (ESP): Provides authenticity and integrity through a MAC (NO NON-REPUDIATION since a MAC is symmetric).
+### 2) Encapsulating Security Payload (ESP): Consists of
+
+#### Header: Seq. number and Security Associations
+
+#### Payload: Encrypted part of the packet
+
+#### Trailer: Padding if required
+
+#### Authentication: Hash value of the packet
+
+### Provides authenticity and integrity through a MAC (NO NON-REPUDIATION since a MAC is symmetric).
 
 ### The main service provided is ENCRYPTION! ICV is run on payload only.
 
