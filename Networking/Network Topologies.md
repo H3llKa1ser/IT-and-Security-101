@@ -77,3 +77,39 @@
 ### Multicast: Send to selected people
 
 ### Broadcast: Send to everybody
+
+## Circuit-Switched Network
+
+### Dedicated Circuit between endpoints
+
+### Endpoints have exclusive use of the circuit and bandwidth
+
+### Example: Telephones
+
+## Packet-Switched Network
+
+### Do not use dedicated connections
+
+### Packets are transmitted on a shared network
+
+### Network devices find the best path
+
+### All packets (eventually) need to be in the correct order
+
+## Virtual Circuits
+
+### Provides a connection between endpoints that acts as if it was a physical circuit
+
+#### 1) Permament Virtual Circuit: The carrier configures the circuit's routes
+
+#### 2) Switched Virtual Circuit: Configured dynamically by the routers
+
+# Carrier Sense Multiple Access (CSMA)
+
+### A protocol which uses the absense/presence of a signal on a medium as permission to speak
+
+## 2 Variations:
+
+#### 1) (CSMA/CA) Carrier Sense Multiple Access with Collision Avoidance: Requires devices to announce transmitting by using a jamming signal
+
+#### 2) (CSMA/CD) Carrier Sense Multiple Access with Collision Detection: Listens for a carrier before transmitting data
