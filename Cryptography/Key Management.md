@@ -25,3 +25,13 @@
 #### 1) Good for sending keys over an untrusted transport
 
 #### 2) Supports symmetric and asymmetric ciphers
+
+### Out-of-Band: Key exchange that uses a medium other than that through which secure messages will be sent. Not very scalable.
+
+### Key Distribution Center (KDC)
+
+#### 1) Contains users publick keys with a valid certificate
+
+#### 2) Two keys: Master keys and Session keys
+
+#### 3) KERBEROS
