@@ -51,3 +51,15 @@
 ### Class D - Range of First Octet: 224-239 - Number of Octets for Network Number: Multicast
 
 ### Class D - Range of First Octet: 240-255 - Number of Octets for Network Number: Reserved
+
+## Classes Inter-Domain Routing (CIDR): Allows flexibility to access more IP addresses
+
+## Subnets: Logical subdivision of a network
+
+## Subnet Mask: Used to define the part of the address that is used for the subnet
+
+### Example:
+
+#### 192.168.145.123/24 is the subnet mask
+
+#### The subnet mask is 11111111 11111111 11111111 00000000 or 255.255.255.0
