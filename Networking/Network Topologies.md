@@ -70,7 +70,9 @@
 
 #### 1) The central piece is a single point of failure
 
-# Unicast, Multicast and Broadcast
+# Topology Concepts
+
+## Unicast, Multicast and Broadcast
 
 ### Unicast: Send a packet to one person
 
@@ -113,3 +115,9 @@
 #### 1) (CSMA/CA) Carrier Sense Multiple Access with Collision Avoidance: Requires devices to announce transmitting by using a jamming signal
 
 #### 2) (CSMA/CD) Carrier Sense Multiple Access with Collision Detection: Listens for a carrier before transmitting data
+
+### Token Passing: Only one device may transmit at a time. Devices can only transmit if they possess the token.
+
+### Ethernet (IEEE 802.3): Played a major role of LANs in the 80s. Supports coaxial cable, unshielded twisted pair and fiber optics.
+
+### Token Ring (IEEE 802.5): Each device gets data from its neighbor upstream and passes it downstream. Devices can only transmit when they have the ring.
