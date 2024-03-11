@@ -63,3 +63,5 @@
 #### 192.168.145.123/24 is the subnet mask
 
 #### The subnet mask is 11111111 11111111 11111111 00000000 or 255.255.255.0
+
+### Border Gateway Protocol (BGP): Exchanges routing information between gateway hosts. The protocol used between the hosts and the internet.
