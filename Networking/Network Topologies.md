@@ -69,3 +69,11 @@
 ### DISADVANTAGES
 
 #### 1) The central piece is a single point of failure
+
+# Unicast, Multicast and Broadcast
+
+### Unicast: Send a packet to one person
+
+### Multicast: Send to selected people
+
+### Broadcast: Send to everybody
