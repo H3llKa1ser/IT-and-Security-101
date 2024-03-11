@@ -35,3 +35,31 @@
 #### 2) Two keys: Master keys and Session keys
 
 #### 3) KERBEROS
+
+# Key Aspects
+
+### Key Storage
+
+#### 1) Encryption
+
+#### 2) Expiration Date
+
+#### 3) Backups
+
+#### 4) Recovery
+
+### Key Recovery
+
+#### 1) Multiparty
+
+#### 2) Common Directories
+
+#### 3) Password Wallets
+
+### Key Escrow
+
+#### 3rd party holds key
+
+### Web of Trust
+
+#### Authenticity of a public key and its owner
