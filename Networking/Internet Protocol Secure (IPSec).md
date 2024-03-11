@@ -36,7 +36,19 @@
 
 ### The main service provided is ENCRYPTION! ICV is run on payload only.
 
-### 3) Internet Key Exchange (IKE): No security services! Just management of secure connection
+### 3) Internet Key Exchange (IKE): Authentication part of IPSec
+
+#### PHASE 1: Authentication using:
+
+#### A shared secret
+
+#### Public Key Encryption
+
+#### Revised Mode of Public Key Encryption
+
+#### PHASE 2: Security Associations are established
+
+### No security services! Just management of secure connection
 
 #### 1) Oakley: Uses Diffie Hellman to agree upon a key
 
