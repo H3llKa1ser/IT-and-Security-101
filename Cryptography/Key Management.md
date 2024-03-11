@@ -30,7 +30,7 @@
 
 ### Key Distribution Center (KDC)
 
-#### 1) Contains users publick keys with a valid certificate
+#### 1) Contains users public keys with a valid certificate
 
 #### 2) Two keys: Master keys and Session keys
 
