@@ -40,4 +40,14 @@
 
 #### 3) fc00:: to fdff:ffff:ffff:ffff:ffff:ffff:ffff:ffff are addresses reserved for internal network use and are not routable on the internet.
 
+# Network Classes
 
+### Class A - Range of First Octet: 1-126 - Number of Octets for Network Number: 1  - Number of Hosts in Network: 16,777,214
+
+### Class -B - Range of First Octet: 128-191 - Number of Octets for Network Number: 2  - Number of Hosts in Network: 65,534
+
+### Class C - Range of First Octet: 192-239 - Number of Octets for Network Number: 3  - Number of Hosts in Network: 254
+
+### Class D - Range of First Octet: 224-239 - Number of Octets for Network Number: Multicast
+
+### Class D - Range of First Octet: 240-255 - Number of Octets for Network Number: Reserved
