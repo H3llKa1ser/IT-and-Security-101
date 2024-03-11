@@ -121,3 +121,5 @@
 ### Ethernet (IEEE 802.3): Played a major role of LANs in the 80s. Supports coaxial cable, unshielded twisted pair and fiber optics.
 
 ### Token Ring (IEEE 802.5): Each device gets data from its neighbor upstream and passes it downstream. Devices can only transmit when they have the ring.
+
+### Fiber Distributed Data Interface (FDDI): Token passing architecture using two rings. Information flows in opposite directions.
