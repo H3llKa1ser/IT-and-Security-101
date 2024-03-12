@@ -31,3 +31,19 @@
 #### 1) File-level encryption: Files are encrypted
 
 #### 2) Application-level encryption: Encryption engine is in the application
+
+# More approaches to data protection
+
+### Data masking/obfuscation
+
+#### 1) Random substitution: A value is replaced with a random value
+
+#### 2) Shuffle: Moves order of values
+
+#### 3) Making: Hiding certain parts of the data
+
+#### 4) Deletion: Removing the data
+
+### Data anonymization: Personal information is removed
+
+### Tokenization: Substituting a sensitive data element for a non-sensitive one
