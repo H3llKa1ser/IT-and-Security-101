@@ -1,6 +1,6 @@
 # Rootkits
 
-### Malware whiuch maintains elevated privileges on a computer by being stealthy
+### Malware which maintains elevated privileges on a computer by being stealthy
 
 ### 4 types of rootkits:
 
