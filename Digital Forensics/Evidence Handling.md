@@ -1,11 +1,11 @@
 # Evidence Handling
 
-Often, court rules typically do not allow hearsay or indirect information, except in exceptional cases. Hence, keeping evidence safe from tampering or damage is essential.
+### Often, court rules typically do not allow hearsay or indirect information, except in exceptional cases. Hence, keeping evidence safe from tampering or damage is essential.
 
-The Chain of Custody records who handled the evidence and how it was protected, from when it was collected until it was presented in court, ensuring the evidence is genuine and unchanged. The general process is as follows:
+### The Chain of Custody records who handled the evidence and how it was protected, from when it was collected until it was presented in court, ensuring the evidence is genuine and unchanged. The general process is as follows:
 
-Document everything properly
-Record all seized items (like devices or files) as evidence.
+#### Document everything properly
+ - Record all seized items (like devices or files) as evidence.
 Note the exact date and time of the seizure.
 Identify who collected the evidence.
 Detail the situation and steps followed during the seizure.
