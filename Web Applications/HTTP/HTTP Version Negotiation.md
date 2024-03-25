@@ -9,3 +9,7 @@
 #### 2) h2c: HTTP/2 over cleartext channels. This would be used when encryption is not available. Since ALPN is a feature of TLS, you can't use it in cleartext channels. In this case, the client sends an initial HTTP/1.1 request with a couple of added headers to request an upgrade to HTTP/2. If the server acknowledges the additional headers, the connection is upgraded to HTTP/2.
 
 ### The h2 protocol is the usual way to implement HTTP/2 since it is considered more secure. In fact, the h2c specification is now regarded as obsolete to the point where most modern browsers don't even support it. Many server implementations, however, still support h2c for compatibility reasons, enabling a different way to smuggle requests.
+
+## h2c upgrades
+
+### When negotiating a cleartext HTTP/2 connection, the client will send a regular HTTP/1.1 request with the Upgrade: h2c header to let the server know it supports h2c. The request must also include an additional HTTP2-Settings header with some negotiation parameters that we won't discuss in detail. A compliant server will accept the upgrade with a 101 Switching Protocols response. From that point, the connection switches to HTTP/2.
