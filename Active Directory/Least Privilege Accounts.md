@@ -1,4 +1,4 @@
-# AD Tier Model
+# AD accounts privileges
 
 ## Least privilege model
 
