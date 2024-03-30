@@ -31,3 +31,8 @@
  - Assets in higher tiers can control other assets in the same or lower tiers. Notice that this refers to the capacity of modifying assets in Active Directory rather than administering machines in lower tiers. For example, a tier 1 user could change the GPOs associated with tier 2 assets or reset passwords for tier 2 users. On the other hand, they should never be able to modify tier 0 assets, as this would lead to privilege escalation paths.
  - Users should never log into lower-tier machines. Since Windows caches credentials for users that log into a machine, having a higher-tier user log into a lower-tier machine would also enable privilege escalation paths. Users can optionally log into higher tiers only if strictly needed and use specific services. Interactive logons across tiers are not permitted.
    
+### AD tiering limits the impact of abusing stolen credentials and lateral movement techniques. An attacker with an initial foothold in a tiered network will have much more trouble trying to move across the network or escalate privileges. Furthermore, since tiering establishes a clear and organised baseline for administrative access management, identifying anomalous behaviours will become more evident, easing the detection of potential threats in our network.
+
+### We have covered the baseline implementation of a tiered Active Directory. Applying these concepts in a real-world setup will require careful analysis as most of the proposed changes are disruptive by nature. Additional configurations may need to be implemented to fit your network's needs.
+
+### Establishing tiering is the first step in implementing effective privilege management across a Windows network.
