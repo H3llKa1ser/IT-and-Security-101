@@ -32,3 +32,7 @@
  - 2) Using tools like mimikatz, the attacker dumps the cached credentials of users who have recently logged into the machine. One of such credentials corresponds to the user "John".
  - 3) The attacker realises that "John" is a member of the Helpdesk group. Because of poor security practices, Helpdesk users have administrative privileges over all machines in the domain.
  - 4) The attacker now has administrative access to all computers through John's account.
+
+### While many questionable security practices led to the compromise of the network in our example, had user John had a more restrictive set of privileges, the damage done by the attacker could have been contained to a portion of the network instead of affecting all machines.
+
+### Correctly restricting the privileges of our domain users allows us to contain the damage done by an attacker should they steal a set of valid credentials.
