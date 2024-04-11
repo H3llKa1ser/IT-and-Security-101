@@ -36,4 +36,16 @@
 
 #### 5) Integrity Impact (I)
 
+ - None (N): 0
+
+ - Partial (P): 0.275
+
+ - Complete (C): 0.66
+
 #### 6) Availability Impact (A)
+
+ - None (N): 0
+
+ - Partial (P): 0.275
+
+ - Complete (C): 0.66
