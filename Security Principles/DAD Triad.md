@@ -12,7 +12,7 @@
 
  - Alteration involves unauthorized changes or modifications to information or data. This could include unauthorized access to and manipulation of data, tampering with system configurations or settings, or injecting malicious code into software or databases. Alteration threats can lead to the integrity of information being compromised, resulting in inaccurate or unreliable data that can adversely affect business operations or decision-making processes.
 
-## 3) Destruction:
+## 3) Destruction/Denial:
 
  - Destruction refers to the unauthorized deletion, removal, or destruction of information or data. This could involve malicious actions such as deleting critical files or databases, corrupting data to make it unusable, or launching denial-of-service (DoS) attacks to disrupt access to systems or services. Destruction threats can result in data loss, service downtime, financial losses, and reputational damage to organizations.
 
