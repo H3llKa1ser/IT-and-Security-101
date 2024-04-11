@@ -85,3 +85,11 @@
 ## CONS
 
 #### 1) Staff might get their feelings hurt (?)
+
+# Major Types of Assessment
+
+#### 1) Goals/objectives-based
+
+#### 2) Compliance-based
+
+#### 3) Red-team (more realistic, less detailed)
