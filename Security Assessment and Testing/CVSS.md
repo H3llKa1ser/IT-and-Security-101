@@ -59,3 +59,27 @@
  - Exploitability = 20 * Attack Vector * Access Complexity * Authentication
 
  - Impact Function = 0 if Impact is also 0, 1.176 otherwise
+
+# CVSS v2.0 Ratings
+
+## Severity -> Base Score Range
+
+#### 1) Low -> 0.0-3.9
+
+#### 2) Medium -> 4.0-6.9
+
+#### 3) High -> 7.0-10.0
+
+# CVSS v3.0 Ratings
+
+## Severity -> Base Score Range
+
+#### 1) None -> 0.0
+
+#### 2) Low -> 0.1-3.9
+
+#### 3) Medium -> 4.0-6.9
+
+#### 4) High -> 7.0-8.9
+
+#### 5) Critical -> 9.0-10.0
