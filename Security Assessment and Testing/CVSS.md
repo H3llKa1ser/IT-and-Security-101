@@ -49,3 +49,7 @@
  - Partial (P): 0.275
 
  - Complete (C): 0.66
+
+## CVSS Base Score Formula
+
+ - ((0.6 * Impact) + (0.4 * Exploitability) -1.5) + Impact Function
