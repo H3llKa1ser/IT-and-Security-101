@@ -12,9 +12,27 @@
 
 #### 2) Access Complexity (AC)
 
+ - High (H): 0.350
+
+ - Medium (M): 0.61
+
+ - Low (L): 0.71
+
 #### 3) Authentication (Au)
 
+ - Multiple (M): 0.45
+
+ - Single (S): 0.56
+
+ - None (N): 0.704
+
 #### 4) Confidentiality Impact (C)
+
+ - None (N): 0
+
+ - Partial (P): 0.275
+
+ - Complete (C): 0.66
 
 #### 5) Integrity Impact (I)
 
