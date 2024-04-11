@@ -1,4 +1,4 @@
-# Non-Disclosure Agreement (NDA)
+# Non-Disclosure Agreement (NDA) or Confidentiality Agreement (CA)
 
 ### An NDA (Non-Disclosure Agreement) document is a legal contract between two or more parties that outlines confidential information shared between them and restricts its disclosure to third parties. NDAs are commonly used in business relationships, partnerships, and various other situations where sensitive information needs to be shared while maintaining confidentiality. Here's what an NDA typically includes:
 
