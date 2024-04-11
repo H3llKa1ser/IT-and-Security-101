@@ -22,3 +22,10 @@
 
 ### Passive information gathering is an essential first step in the reconnaissance phase of a penetration test or security assessment. By gathering intelligence passively, attackers and penetration testers can better understand the target environment, identify potential vulnerabilities, and plan their attack strategies more effectively. However, it's important to conduct passive information gathering ethically and within the bounds of the law to avoid unauthorized access or privacy violations.
 
+## Other information that can be gathered passively:
+
+7. **Physical Location**
+
+8. **Staff**
+
+9. **Metadata**
