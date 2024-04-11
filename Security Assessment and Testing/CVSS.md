@@ -53,3 +53,5 @@
 ## CVSS Base Score Formula
 
  - ((0.6 * Impact) + (0.4 * Exploitability) -1.5) + Impact Function
+
+ - Impact = 10.41 * (1- (1- Confidentiality) * (1 - Integrity) * (1 - Availability))
