@@ -55,3 +55,7 @@
  - ((0.6 * Impact) + (0.4 * Exploitability) -1.5) + Impact Function
 
  - Impact = 10.41 * (1- (1- Confidentiality) * (1 - Integrity) * (1 - Availability))
+
+ - Exploitability = 20 * Attack Vector * Access Complexity * Authentication
+
+ - Impact Function = 0 if Impact is also 0, 1.176 otherwise
