@@ -27,3 +27,12 @@
 #### 5) Managed Service Accounts
 
  - Holds accounts used by services in your Windows Domain.
+
+
+## Security Groups VS OUs
+
+### Both are used to classify users and computers.
+
+### Security groups are used to grant permissions over resources.
+
+### OUs are used for applying policies to users and computers.
