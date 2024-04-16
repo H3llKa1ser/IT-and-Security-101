@@ -6,6 +6,26 @@
 
 ### A global databaser, scalable, dynamic database that translates domain names to IP addresses
 
+# DNS Record Types
+
+#### 1) A record: Resolve to IPv4 addresses
+
+#### 2) AAAA Record: Resolve to IPv6 addresses
+
+#### 3) CNAME Record: Resolve to another domain name
+
+#### 4) MX Record: Resolve to addresses of servers that handle email for the domain we are querying
+
+#### 5) PTR Record: Resolves from name to IP (Reverse DNS lookups)
+
+#### 6) TXT Records: Any text-based data can be stored
+
+#### 7) NS Record: Lists name servers for the zone
+
+#### 8) SRV Records: Service records
+
+#### 9) SoA: Start of Authority provides address of server authoritative for the zone
+
 # Key Terms
 
 ### Resolver: A DNS client that sends DNS messages to obtain information about the requested domain name space
