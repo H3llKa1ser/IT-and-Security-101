@@ -28,6 +28,36 @@
 
 #### 10) CAA Record: Specifies which certificate authorities are allowed to issue SSL certificates for a domain
 
+# DNS request and response process
+
+### Here's a simplified example of a DNS request and response process:
+
+1. **DNS Request**:
+   - Suppose a user wants to access a website by typing its domain name into their web browser, for example, "www.example.com."
+   - The user's device, typically a computer or smartphone, sends a DNS query to a DNS resolver (usually provided by the user's Internet Service Provider or ISP). This query asks the resolver to translate the domain name "www.example.com" into an IP address.
+
+2. **DNS Resolution**:
+   - The DNS resolver receives the query and checks its cache to see if it already has the corresponding IP address for "www.example.com." If it does, it returns the IP address to the user's device, and the process ends here.
+   - If the resolver doesn't have the IP address in its cache, it acts as a client itself and sends a DNS query to the root name servers, asking for the IP address of the authoritative name servers responsible for the ".com" top-level domain.
+
+3. **Root Name Servers**:
+   - The root name servers respond to the resolver's query with the IP addresses of the name servers responsible for the ".com" top-level domain.
+
+4. **Top-Level Domain (TLD) Name Servers**:
+   - The resolver then sends a query to one of the name servers responsible for the ".com" TLD, asking for the IP address of the authoritative name servers for "example.com."
+
+5. **Authoritative Name Servers**:
+   - The ".com" name server responds with the IP addresses of the name servers authoritative for the "example.com" domain.
+   - The resolver then sends a query directly to one of these authoritative name servers, asking for the IP address of "www.example.com."
+
+6. **Final Response**:
+   - The authoritative name server for "example.com" responds to the resolver's query with the IP address of "www.example.com."
+   - The resolver caches this IP address for future use and sends it back to the user's device.
+   - Now equipped with the IP address, the user's device can establish a connection to the web server hosting "www.example.com" and retrieve the requested web page.
+
+### Throughout this process, various DNS servers communicate to resolve the domain name into its corresponding IP address, allowing the user's device to access the desired website.
+
+
 # Key Terms
 
 ### Resolver: A DNS client that sends DNS messages to obtain information about the requested domain name space
