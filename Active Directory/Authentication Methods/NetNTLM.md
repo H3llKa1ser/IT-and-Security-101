@@ -1,4 +1,4 @@
-# NetNTLM
+# NetNTLM Authentication
 
 ## Steps:
 
