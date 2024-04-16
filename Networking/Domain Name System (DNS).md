@@ -24,7 +24,9 @@
 
 #### 8) SRV Records: Service records
 
-#### 9) SoA: Start of Authority provides address of server authoritative for the zone
+#### 9) SoA Records: Start of Authority provides address of server authoritative for the zone
+
+#### 10) CAA Record: Specifies which certificate authorities are allowed to issue SSL certificates for a domain
 
 # Key Terms
 
