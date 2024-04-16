@@ -10,8 +10,4 @@
 
 ### Overall, trees, forests, and trusts are foundational concepts in Windows AD that define the structure, organization, and relationships within a distributed network environment, enabling centralized management and secure resource access across domains and forests.
 
-## 2 Kinds of trust relationships
 
- - One-way trust relationships
-
- - Two-way trust relationships (Default)
