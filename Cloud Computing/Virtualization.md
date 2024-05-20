@@ -80,4 +80,10 @@
   
  - 5) QEMU
   
+## Hypervisor problems and issues
+
+### Hypervisors work as expected for a large number of use cases but begin to encounter issues when scaling lightweight applications. Microservices give us a good example of an application architecture that encounters issues when deployed from a hypervisor. A microservice is an application structure that is broken up into smaller services that are scalable and use lightweight protocols and features. The lightweight nature of the architecture poses obvious issues to hypervisors that require a large number of virtual machines each with high resource usage.
+
+## Containers are the current solution to the issues encountered with hypervisors at scale.
+
 
