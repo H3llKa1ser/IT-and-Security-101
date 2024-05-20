@@ -12,7 +12,7 @@
 
 ### Containerisation platforms remove this headache by packaging the dependencies together and “isolating” the application’s environment.
 
-## (NOTE: This is not to be confused with "security isolation" in this context!
+## NOTE: This is not to be confused with "security isolation" in this context!
 
 ### If the device supports the containerisation engine, a user will be able to run the application and have the same behaviours.
 
