@@ -19,3 +19,21 @@
 ### Application Virtualization: Applications as a managed service
 
 ### Storage Virtualization: Abstracts disks and flash drives
+
+## Definition
+
+### At its most basic level, virtualization is the concept of encapsulating the capabilities and features of a physical machine in a virtual environment, known as a virtual machine.
+
+### But why is virtualization needed? For most organizations and individuals, virtualization comes from a need of the following:
+
+#### 1) Decrease expenses:
+
+ - Physical servers can be expensive, and virtualization can decrease the number of servers or other hardware, or even completely remove physical hardware from a company's infrastructure.
+
+#### 2) Scale:
+
+ -  Without properly implemented DevOps, it may be hard for a company to scale resources as server usage increases. Virtualization makes this process easier and can delegate a server's resources to virtual machines as needed based on usage.
+
+#### 3) Efficiency:
+
+ -  Like scaling, virtualization can also make it easier to decrease the resources allocated to a virtual machine if there is reduced usage.
