@@ -37,3 +37,8 @@
 #### 3) Efficiency:
 
  -  Like scaling, virtualization can also make it easier to decrease the resources allocated to a virtual machine if there is reduced usage.
+
+# Virtualization Structure
+
+### Virtualization is implemented using an engine-machine format, which means that a software or system creates an abstraction layer and allocates resources, while an operating system or application can then be installed on top of this virtualized environment. The operating system installed in a virtual machine is known as a guest OS, as opposed to the host OS on which the virtualization engine is running.
+
