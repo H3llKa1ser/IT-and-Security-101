@@ -8,7 +8,7 @@
 
   - CN=NTAuthCertificates,CN=Public Key Services,CN=Services,CN=Configuration,DC=domain,DC=com
 
-### is central to establishing trust for certificate authentication.
+ is central to establishing trust for certificate authentication.
 
 # Secure Channel (Schannel) Authentication
 
