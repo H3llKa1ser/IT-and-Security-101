@@ -10,4 +10,4 @@
 
  - Privileged containers should be prevented  
 
- - [Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/) and https://kubernetes.io/docs/concepts/security/pod-security-admission/
+ - [Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/) and [Pod Security Admission](https://kubernetes.io/docs/concepts/security/pod-security-admission/)
