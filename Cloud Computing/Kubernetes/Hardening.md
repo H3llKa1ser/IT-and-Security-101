@@ -92,3 +92,44 @@ Kube-bench can be installed in multiple ways, some of which include:
  - Run within a cloud provider service such as Azure's AKS (Azure Kubernetes Service) or Amazon's EKS (Elastic Kubernetes Service) 
 
 
+## Kubelet Security
+
+The kubelet component listens for requests on the following ports: 
+
+ - Port 10250: Where it serves the kublet-api and allows for full access 
+
+ - Port 10255: Where it serves another API which has unauthorised, unauthenticated read-only access
+
+The kubelet-api is used to manage containers running on a node and, as mentioned, has full access; this makes it a prime target for hackers who could use this API to interact directly with the kubelet component and create containers of their own or delete containers running within the worker node. For this reason, it is critical that you should ensure that unauthorised traffic is locked down. 
+
+The kubelet component should only respond to traffic which originates from the kube-apiserver. This can be done by making configuration changes to the kubelet config file. Note: To find out where the kubelet config file is located, run
+
+    ps ef | grep kubelet
+
+and find the directory in the --config flag. The first step to locking down unauthorised traffic is to disable anonymous traffic (this implements CIS security benchmark 4.2.1). We do this by setting authentication:anonymous:enabled to false. Like so: 
+
+    apiVersion: kubelet.config.k8s.io/v1beta1
+    authentication: 
+      anonymous: 
+        enabled: false 
+      webhook: 
+        cacheTTL: 0s 
+        enabled: true 
+      x509: 
+        clientCAFile: /var/lib/minikube/certs/ca.crt
+
+
+### 1) Kubelet Authentication
+
+With anonymous traffic now restricted, the kubelet component will need to authenticate a request. This can be done using one of two methods: 
+
+1) X509 Client Certificate Authentication: Kubelet will need to start with the --client-ca-file flag (providing a CA bundle to authenticate certificates with), separately for this method the apiserver component will have to be started with the --kubelet-client-certificate and --kubelet-client-key flags.
+
+2) API Bearer Token: This is configured by setting authentication:webhook:enabled to "true". Kubelet will then need to start with the flags --authentication-token-webhook and --kubeconfig. The API group authentication.k8s.io/v1beta1 will also need to be enabled in the API server.
+
+With either of those authentication methods implemented, the kublet component will no longer accept requests from unauthenticated sources, and the cluster is a bit more hardened! For example, if certificate authentication was enabled and a call was made to the kubelet component trying to list pods, it would be rejected as "unauthorised" unless the appropriate key and certificate were provided along with the request.
+
+## API Traffic Security
+
+Within a Kubernetes cluster, there are many components. These components need to communicate; Kubernetes is entirely API driven, meaning restricting this communication (who can access it, what they can do) should be the first line of defence. One way in which we can secure API traffic is through encryption.
+
