@@ -1,8 +1,18 @@
 # Interaction with Kubernetes
 
-## Tools: Kubectl (CLI), Kubernetes dashboard
+## Tools: Kubectl (CLI), Kubernetes dashboard, minikube
 
 We've just covered how to define the desired state of your cluster using YAML config files, but currently, those exist only as files. To take these from configurations to running processes, we need to interact with the cluster. We can do this by interacting with the apiserver component of the control plane using different methods: UI if using the Kubernetes dashboard, API if using some sort of script or command line using a tool called kubectl.
+
+### Minikube Commands:
+
+#### 1) Setup a Kubernetes environment (Default Container Network Interface CNI is Kindnet)
+
+    minikube start
+
+#### 2) Setup a Kubernetes environment with a different CNI
+
+    minikube start --cni=calico
 
 ### Kubectl Commands:
 
