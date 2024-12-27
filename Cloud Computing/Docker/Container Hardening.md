@@ -117,3 +117,14 @@ Capabilities allow us to fine-tune what privileges a process has.
 | **CAP_SYS_ADMIN**      | This capability provides a variety of administrative privileges, including being able to mount/unmount file systems, changing network settings, performing system reboots, shutdowns, and more. | You may find this capability in a process that automates administrative tasks. For example, modifying a user or starting/stopping a service. |
 | **CAP_SYS_RESOURCE**  | This capability allows a process to modify the maximum limit of resources available. For example, a process can use more memory or bandwidth. | This capability can control the number of resources a process can consume on a granular level. This can be either increasing the amount of resources or reducing the amount of resources. |
 
+To summarise, privileged containers are containers assigned full privileges - i.e., full root access. Attackers can escape a container using this method.
+
+It's recommended assigning capabilities to containers individually rather than running containers with the --privileged flag (which will assign all capabilities). For example, you can assign the NET_BIND_SERVICE capability to a container running a web server on port 80 by including the --cap-add=NET_BIND_SERVICE when running the container.
+
+    docker run -it --rm --cap-drop=ALL --cap-add=NET_BIND_SERVICE mywebserver
+
+Finally, the command capsh --print can be used to determine what capabilities are assigned to a process.
+
+    capsh --print
+
+It is important to frequently review what capabilities are assigned to a container. When a container is privileged, it shares the same namespace as the host, meaning resources on the host can be accessed by the container - breaking the "isolated" environment.
