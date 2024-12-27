@@ -247,3 +247,48 @@ Seccomp: Is within the program itself, which restricts what system calls the pro
 
 #### TIP: It's important to note that it is not a "one or the other" case. Seccomp and AppArmor can be combined to create layers of security for a container.
 
+## Reviewing Docker Images
+
+### Tools:
+
+1) Docker Hub UI
+
+2) Dive (Reverse Engineer Docker Images) https://github.com/wagoodman/dive
+
+## Compliance and Benchmarking
+
+### 1) Compliance Frameworks
+
+ - NIST SP 800-190
+
+ - ISO 27001
+
+ - HIPPA
+
+ - GDPR
+
+### 2) Benchmarking Tools
+
+ - CIS Docker Benchmark
+
+ - OpenSCAP
+
+ - Docker Scout
+
+ - Anchore
+
+ - Grype Vulnerability Scanner
+
+### Examples
+
+Check for CVEs on a local image
+
+    docker scout cves local://nginx:latest
+
+Scan a docker image for vulnerabilities with grype
+
+    grype IMAGE_NAME --scope all-layers
+
+Scan an exported container filesystem
+
+    grype /path/to/image.tar
