@@ -95,3 +95,25 @@ You can use the docker inspect containername command to view information about a
 
 Docker uses namespaces to create isolated environments. For example, namespaces are a way of performing different actions without affecting other processes. Think of these as rooms in an office; each room serves its own individual purpose. What happens in a room in this office will not affect what happens in another office. These namespaces provide security by isolating processes from one another.
 
+## Prevent Over-Privileged Containers
+
+First, we need to understand what privileged containers are in this context. Privileged containers are containers that have unchecked access to the host.
+
+The entire point of containerisation is to "isolate" a container from the host. By running Docker containers in "privileged" mode, the normal security mechanisms to isolate a container from the host are bypassed. While privileged containers can have legitimate uses, for example, running Docker-In-Docker (a container within a container) or for debugging purposes, they are extremely dangerous.
+
+When running a Docker container in “privileged” mode, Docker will assign all possible capabilities to the container, meaning the container can do and access anything on the host (such as filesystems).
+
+### 1) Capabilities
+
+Capabilities are a security feature of Linux that determines what processes can and cannot do on a granular level. Traditionally, processes can either have full root privileges or no privileges at all, which can be dangerous as we may not want to allow a process to have full root privileges as it means it will have unrestricted access to the system.
+
+Capabilities allow us to fine-tune what privileges a process has.
+
+### Example table of some capabilities
+
+| Capability            | Description                                                                                                             | Use Case                                                                                       |
+|-----------------------|-------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| **CAP_NET_BIND_SERVICE** | This capability allows services to bind to ports, specifically those under 1024, which usually requires root privileges. | Allowing a web server to bind on port 80 without root access.                                 |
+| **CAP_SYS_ADMIN**      | This capability provides a variety of administrative privileges, including being able to mount/unmount file systems, changing network settings, performing system reboots, shutdowns, and more. | You may find this capability in a process that automates administrative tasks. For example, modifying a user or starting/stopping a service. |
+| **CAP_SYS_RESOURCE**  | This capability allows a process to modify the maximum limit of resources available. For example, a process can use more memory or bandwidth. | This capability can control the number of resources a process can consume on a granular level. This can be either increasing the amount of resources or reducing the amount of resources. |
+
