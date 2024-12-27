@@ -30,3 +30,49 @@ While we can spin up multiple containers or “microservices” individually and
 
 https://docs.docker.com/compose/reference/
 
+## Docker-compose.yml files
+
+The formatting of a docker-compose.yml file is different to that of a Dockerfile. It is important to note that YAML requires indentation (a good practice is two spaces which must be consistent!).
+
+## YAML file contents
+
+| Instruction           | Explanation                                                                                                                                                          | Example                                      |
+|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
+| **version**           | This is placed at the top of the file and is used to identify what version of Compose the `docker-compose.yml` is written for.                                       | `'3.3'`                                      |
+| **services**          | This instruction marks the beginning of the containers to be managed.                                                                                               | `services:`                                  |
+| **name (replace value)** | This instruction is where you define the container and its configuration. "name" needs to be replaced with the actual name of the container, i.e., "webserver" or "database". | `webserver`                                  |
+| **build**             | This instruction defines the directory containing the Dockerfile for this container/service. (You will need to use this or an image).                               | `./webserver`                                |
+| **ports**             | This instruction publishes ports to the exposed ports (this depends on the image/Dockerfile).                                                                       | `'80:80'`                                    |
+| **volumes**           | This instruction lists the directories that should be mounted into the container from the host operating system.                                                    | `'./home/cmnatic/webserver/:/var/www/html'` |
+| **environment**       | This instruction is used to pass environment variables (not secure), i.e., passwords, usernames, timezone configurations, etc.                                      | `MYSQL_ROOT_PASSWORD=helloworld`            |
+| **image**             | This instruction defines what image the container should be built with (you will need to use this or build).                                                        | `mysql:latest`                               |
+| **networks**          | This instruction defines what networks the containers will be a part of. Containers can be part of multiple networks (e.g., a web server can only contact one database, but the database can contact multiple web servers). | `ecommerce`                                  |
+
+## Documentation
+
+https://docs.docker.com/compose/compose-file/
+
+## Example Docker-compose.yml file
+
+    version: '3.3'
+    services:
+      web:
+        build: ./web
+        networks:
+          - ecommerce
+        ports:
+          - '80:80'
+
+
+      database:
+        image: mysql:latest
+        networks:
+          - ecommerce
+        environment:
+          - MYSQL_DATABASE=ecommerce
+          - MYSQL_USERNAME=root
+          - MYSQL_ROOT_PASSWORD=helloword
+    
+    networks:
+      ecommerce:
+  
