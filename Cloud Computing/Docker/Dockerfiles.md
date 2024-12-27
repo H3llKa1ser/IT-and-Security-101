@@ -20,3 +20,15 @@ You use Dockerfiles to contain the commands the container should execute when it
 | **EXPOSE**  | This instruction is used to tell the person who runs the container what port they should publish when running the container.                 | `EXPOSE 80` (publish to port 80)         |
 
 
+## Example Dockerfile
+
+    # THIS IS A COMMENT
+    # Use Ubuntu 22.04 as the base operating system of the container
+    FROM ubuntu:22.04
+
+    # Set the working directory to the root of the container
+    WORKDIR / 
+
+    # Create helloworld.txt
+    RUN touch helloworld.txt
+
