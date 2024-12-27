@@ -32,3 +32,6 @@ You use Dockerfiles to contain the commands the container should execute when it
     # Create helloworld.txt
     RUN touch helloworld.txt
 
+## TIP: 
+
+Remember, the commands that you can run via the RUN instruction will depend on the operating system you use in the FROM instruction. (In this example, I have chosen Ubuntu. It’s important to remember that the operating systems used in containers are usually very minimal. I.e., don’t expect a command to be there from the start (even commands like curl, ping, etc., may need to be installed.)
