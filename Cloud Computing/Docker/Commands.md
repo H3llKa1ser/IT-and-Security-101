@@ -47,3 +47,7 @@ List running containers
 List ALL containers
 
     docker ps -a
+
+### 3) Build a Docker Image
+
+    docker build -t IMAGE_NAME DOCKERFILE_LOCATION
