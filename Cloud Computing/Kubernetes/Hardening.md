@@ -67,5 +67,28 @@ Pod Security Standards are used to define security policies at 3 levels (privile
 
 Pod Security Admission (using a Pod Security Admission controller) enforces these Pod Security Standards by intercepting API server requests and applying these policies.
 
+## Security Benchmarks
+
+### 1) CIS Security Benchmarks
+
+Cluster hardening best practices change regularly as new vulnerabilities are introduced, old features are retired/new features are introduced, etc, so how do we keep up to speed on what these practices are? Thankfully, this is done by CIS (Centre for Internet Security), a non-profit organisation that helps collect and define standards that can be implemented as preventative measures against cyber attacks. They define these standards as "security benchmarks"; this way, your cluster can be checked against these benchmarks to check your level of security
+
+CIS provides security benchmarks for many different technologies (including browser, database and cloud technologies).
+
+Full benchmark document: https://www.cisecurity.org/benchmark/kubernetes
+
+This document separates the cluster hardening practices into the different Kubernetes components, each providing a method of auditing and remediation. CIS Security Benchmarks are just one example of a cyber security baseline resource; it is one of the most commonly used along with STIG (Security Technical Information Guidelines) provided by DISA (US Department of Defence Systems Agency).
+
+### 2) Kube-bench https://github.com/aquasecurity/kube-bench
+
+This tool developed by Aqua Security can perform automated assessments to check if Kubernetes has been implemented using best cluster hardening practices.
+
+Kube-bench can be installed in multiple ways, some of which include: 
+
+ - Kube-bench can be run inside a pod but will need to be granted sufficient permissions to access certain directories/ config files and the host's PID namespace (The process ID namespace to check running processes)  
+
+ - Run inside of a container
+
+ - Run within a cloud provider service such as Azure's AKS (Azure Kubernetes Service) or Amazon's EKS (Elastic Kubernetes Service) 
 
 
