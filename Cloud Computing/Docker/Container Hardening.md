@@ -128,3 +128,122 @@ Finally, the command capsh --print can be used to determine what capabilities ar
     capsh --print
 
 It is important to frequently review what capabilities are assigned to a container. When a container is privileged, it shares the same namespace as the host, meaning resources on the host can be accessed by the container - breaking the "isolated" environment.
+
+## Seccomp & AppArmor
+
+### 1) Seccomp
+
+Seccomp is an important security feature of Linux that restricts the actions a program can and cannot do. To explain, picture a security guard at the entrance of an office. The security guard is responsible for making sure that only authorised people are allowed into the building and that they do what they are supposed to do. In this scenario, Seccomp is the security guard.
+
+Seccomp allows you to create and enforce a list of rules of what actions (system calls) the application can make. For example, allowing the application to make a system call to read a file but not allowing it to make a system call to open a new network connection (such as a reverse shell).
+
+These profiles are helpful because they reduce attackers' ability to execute malicious commands whilst maintaining the application's functionality. For example, a Seccomp profile for a web server may look like the following:
+
+#### Example Seccomp profile.json file
+
+    {
+      "defaultAction": "SCMP_ACT_ALLOW",
+      "architectures": [
+        "SCMP_ARCH_X86_64",
+        "SCMP_ARCH_X86",
+        "SCMP_ARCH_X32"
+      ],
+      "syscalls": [
+        { "names": [ "read", "write", "exit", "exit_group", "open", "close", "stat", "fstat", "lstat", "poll", "getdents", "munmap", "mprotect", "brk", "arch_prctl", "set_tid_address", "set_robust_list" ], "action":    "SCMP_ACT_ALLOW" },
+        { "names": [ "execve", "execveat" ], "action": "SCMP_ACT_ERRNO" }
+      ]
+    }
+
+This Seccomp profile:
+
+ - Allows files to be read and written to
+
+ - Allows a network socket to be created
+
+ - But does not allow execution (for example, execve)
+
+To create a Seccomp profile, you can simply create a profile using your favourite text editor.
+
+With our Seccomp profile now created, we can apply it to our container at runtime by using the --security-opt seccomp flag with the location of the Seccomp profile. For example:
+
+    docker run --rm -it --security-opt seccomp=/home/cmnatic/container1/seccomp/profile.json mycontainer
+
+Docker already applies a default Seccomp profile at runtime. However, this may not be suitable for your specific use case, especially if you wish to harden the container further while maintaining functionality. 
+
+### 2) AppArmor
+
+AppArmor is a similar security feature in Linux because it prevents applications from performing unauthorised actions. However, it works differently from Seccomp because it is not included in the application but in the operating system.
+
+This mechanism is a Mandatory Access Control (MAC) system that determines the actions a process can execute based on a set of rules at the operating system level. To use AppArmor, we first need to ensure that it is installed on our system:
+
+    sudo aa-status
+
+With the output "apparmor module is loaded", we can confirm that AppArmor is installed and enabled. To apply an AppArmor profile to our container, we need to do the following:
+
+ - 1) Create an AppArmor profile
+  
+ - 2) Load the profile into AppArmor
+  
+ - 3) Run our container with the new profile
+  
+First, let's create our AppArmor profile. You can use your favourite text editor for this. Note that there are tools out there that can help generate AppArmor profiles based on your Dockerfile.
+
+Provided below is an example AppArmor profile (profile.json) for an "Apache" web server that:
+
+ - Can read files located in /var/www/, /etc/apache2/mime.types and /run/apache2. 
+
+ - Read & write to /var/log/apache2.
+
+ - Bind to a TCP socket for port 80 but not other ports or protocols such as UDP.
+
+ - Cannot read from directories such as /bin, /lib, /usr.
+
+#### Example AppArmor profile.json file
+
+    /usr/sbin/httpd {
+
+      capability setgid,
+      capability setuid,
+
+      /var/www/** r,
+      /var/log/apache2/** rw,
+      /etc/apache2/mime.types r,
+
+      /run/apache2/apache2.pid rw,
+      /run/apache2/*.sock rw,
+
+      # Network access
+      network tcp,
+
+      # System logging
+      /dev/log w,
+
+      # Allow CGI execution
+      /usr/bin/perl ix,
+
+      # Deny access to everything else
+      /** ix,
+      deny /bin/**,
+      deny /lib/**,
+      deny /usr/**,
+      deny /sbin/**
+    }
+
+Now that we have created the AppArmor profile, we will need to import this into the AppArmor program to be recognised.
+
+    sudo apparmor_parser -r -W /home/cmnatic/container1/apparmor/profile.json
+
+With our AppArmor profile now imported, we can apply it to our container at runtime by using the --security-opt apparmor flag with the location of the AppArmor profile. For example:
+
+    docker run --rm -it --security-opt apparmor=/home/cmnatic/container1/apparmor/profile.json mycontainer
+
+Just like Seccomp, Docker already applies a default AppArmor profile at runtime. However, this may not be suitable for your specific use case, especially if you wish to harden the container further while maintaining functionality.
+
+### 3) Differences Seccomp vs AppArmor
+
+AppArmor: Determines what resources an application can access (i.e., CPU, RAM, Network interface, filesystem, etc) and what actions it can take on those resources.
+
+Seccomp: Is within the program itself, which restricts what system calls the process can make (i.e. what parts of the CPU and operating system functions).
+
+#### TIP: It's important to note that it is not a "one or the other" case. Seccomp and AppArmor can be combined to create layers of security for a container.
+
