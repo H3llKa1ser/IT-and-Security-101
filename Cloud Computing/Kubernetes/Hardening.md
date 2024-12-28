@@ -305,4 +305,56 @@ Now that we've established the different kinds of RBAC objects, let's give some 
 | **Users**                 | A user, like "Bob," is granted permissions (e.g., "get" pods) in a specific namespace, like "dev," using a Role to ensure limited access to resources within that namespace. | A user, like "Alice," who needs to perform actions at the cluster level (e.g., "create" resources across all namespaces) is granted a ClusterRole with a ClusterRoleBinding. |
 
 
+### 2) Defining RBAC
+
+ Let's say we have a pod that is supposed to check the running status of pods in the "example-namespace" namespace. The pod identifies as ExampleServiceAccount. The pod definition YAML may look something like this: 
+
+     apiVersion: v1
+     kind: Pod
+     metadata:
+       name: up-checker
+       namespace: example-namespace
+     spec:
+       serviceAccountName: ExampleServiceAccount
+       containers:
+       - name: kubectl
+         image: bitnami/kubectl:latest
+         command:
+       # commands for pod status check logic would go here
+
+We then want to ensure that this pod has only the permissions required to perform this upcheck. To do this, we would first define a Role, looking something like this:  
+
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      name: up-checker-role
+      namespace: example-namespace
+    rules:
+    - apiGroups: [""]
+      resources: ["pods"]
+      verbs: ["get", "list", "watch"]
+
+ This role allows get, list, and watch verbs to be used ONLY on pods and ONLY in the example-namespace namespace. Next, we would need to bind this role to a user or ServiceAccount. Since our pod used the ServiceAccount ExampleServiceAccount, we want to bind this ServiceAccount to the up-checker-role. To do this, we would define a RoleBinding like so: 
+
+     apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: up-checker-role-binding
+      namespace: example-namespace
+    subjects:
+    - kind: ServiceAccount
+      name: ExampleServiceAccount
+      namespace: example-namespace
+    roleRef:
+      kind: Role
+      name: up-checker-role
+      apiGroup: rbac.authorization.k8s.io
+
+ Here, we tell Kubernetes the subjects (or, in this case, a single subject) to which we want to bind this role (the ServiceAccount ExampleServiceAccount) and what role we would like to bind this subject to (up-checker-role). Remember we can apply each configuration YAML using the following command:
+
+    kubectl apply -f filename.yaml
+
+#### TIP: Defining a ClusterRole/ClusterRoleBindng is almost identical, except there is no need to define a namespace and the "kind" would changed to ClusterRole/ClusterRoleBindng.
+
+
 
