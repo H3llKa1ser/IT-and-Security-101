@@ -179,3 +179,75 @@ Once the certificates have been generated, the corresponding Kubernetes componen
 
 Implementing TLS encryption like this will implement CIS security benchmarks 1.2.24 - 27, hardening the cluster even further. However, note that when these certificates have been created and distributed, they have a validity date. This means that, at some point, these certificates will have to be rotated. As you can probably tell, this process can become quite time-consuming. To help with this, Kubernetes made the Kubernetes Certificate API. This API can be used to create CSRs and have them approved to generate certificates. In a production environment, these actions will likely be protected by RBAC having ClusterRoles for users to create CSRs and for admins to approve CSRs. 
 
+## Admission Controllers
+
+They intercept a request after authentication/authorisation (but before an object is created) and perform checks to see if the request should be allowed. Think of it like a bouncer at a nightclub, checking the ID of a potential customer. Sure, their ID is valid, but considering they can't walk in a straight line, should they be let in? 
+
+Admission controllers have two characteristics. They can be one, the other or both. The characteristics are:
+
+ - Mutating: This means the admission controller can modify the object related to the request they admit. For example an admission controller which ensures a pod configuration is set to a certain value. The admission controller would receive the request to create a pod and change (or mutate) this configuration value before persistence.
+
+ - Validating: This means the admission controller validates the request data to approve or deny the request. For example, if the admission controller receives a request to create a pod but doesn't have a specific label, it is rejected.
+
+The actual check done by the admission controller depends on which admission controller it is. You can think of admission controllers in two groups: Built-in admission controllers and custom user defined admission controller webhooks.
+
+### 1) Built-in
+
+Kubernetes comes with many built-in admission controllers, which are compiled into the kube-apiserver binary and, therefore, can only be configured by a cluster administrator. Some examples of built-in admission controllers and what their function/check is: 
+
+1) AlwaysPullImages: This admission controller modifies all new pods and enforces the "Always" ImagePullPolicy. As a DevSecOps engineer, this is the kind of AdmissionController you want to enable as it ensures that pods always pull the latest version of the container image while mitigating supply chain attacks. Enabling implements CIS Security Benchmark 1.2.11.
+
+2) EventRateLimit: This admission controller helps avoid a problem where the Kubernetes API gets flooded with requests to store new events. Setting this limit implements CIS Security Benchmark 1.2.9.
+
+3) ServiceAccount: Again, this admission controller is strongly recommended to be enabled (by Kubernetes themself); it ensures that default service accounts are created for pod which don't specify one. This prevents pods from running without an associated service account which can lead to privilege escalation. Enabling implements CIS Security Benchmark 1.2.13.
+
+These built-in admission controllers are implemented by editing the kube-apiserver YAML file (kube-apiserver will need to be restarted after doing this):
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+     name: kube-apiserver
+     namespace: kube-system
+    spec:
+     containers:
+     - name: kube-apiserver
+       command:
+       - kube-apiserver
+       - --admission-control=AlwaysPullImages
+
+### 2) Admission Controller Webhooks
+
+These built-in admission controllers can be very helpful for ensuring that your cluster meets pre-defined security standards followed by other organisations. However, what if your organisation wants to enforce custom security standards or bespoke pod deployment checks specific to its organisation, like namespace syntax? This is done using admission controller webhooks.
+
+You define this custom admission controller webhook, which will contain the logic for the check. If defining a validating admission controller webhook, the logic will define admission or rejection conditions. If defining a mutating admission controller webhook, the logic will define changes that need made to the object/resource before persistence. The admission controller webhook would then be deployed as a service (or other method which ensures it has a HTTP endpoint). Now these custom admission controllers webhooks are not added to the kube-apiserver directly (for security/isolation reasons) but rather are called upon by one of two built-in admission controllers (depending on their logic
+
+1) ValidatingAdmissionWebhook
+
+2) MutatingAdmissionWebhook
+
+Both of these built-in admission controllers act as an intermediary between the custom admission controller and the kube-apiserver. For example, if a custom validating admission controller was defined and exposed on an HTTP endpoint, that endpoint would be added to the ValidatingAdmissionWebhook (a resource which you create) along with any other parameters, such as TLS configuration. 
+
+When Kubernetes then receives an API request (to create, update or delete resources), it invokes the enabled admission webhooks. The endpoint URLs in these webhooks will send the request and will produce a response to the API (if validating a pass or rejection with error messages. If mutating maybe an altered object.). For example, imagine you have defined a custom mutating admission controller to enforce a namespace format; this is what that might look like.
+
+
+    apiVersion: admissionregistration.k8s.io/v1
+    kind: MutatingWebhookConfiguration
+    metadata:
+      name: my-mutating-webhook
+    webhooks:
+    - name: my-mutating-webhook.example.com
+      clientConfig:
+        service:
+          name: pod-name-admission-controller-service
+          namespace: default
+          path: "/mutate"
+        caBundle: 
+      admissionReviewVersions: ["v1"]
+      rules:
+      - operations: ["CREATE", "UPDATE"]
+        apiGroups: [""]
+        apiVersions: ["v1"]
+        resources: ["pods"]
+
+Admission controllers are yet another tool in your DevSecOps arsenal. They can be used to harden Kubernetes clusters to ensure that authorised requests are checked against and security best practices are enforced. 
+    
