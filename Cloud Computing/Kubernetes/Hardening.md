@@ -282,3 +282,27 @@ We define the app we want to protect under the spec:PodSelector:matchLabels:app 
     kubectl apply -f <network-policy-name>.yaml 
 
 command, and there you have it! You have restricted network traffic into your database service. Note that defining NetworkPolicies in all namespaces implements CIS security benchmark 5.3.2.
+
+## Role-Based Access Control (RBAC)
+
+Let's define what four different Kubernetes objects that can be defined when implementing RBAC: 
+
+1) Role: What can this role do, and to what resource(s)? Permissions are additive, meaning there are no deny permissions. Think of this as allowlisting for API access. You will provide a verb (what can this role do), e.g. "get" or "delete", and a resource (and to what), e.g. "pods" or "secrets". Note that sub-resources can also be defined here using a / after the resource name, e.g. pods/log. This will be visualised with a configuration example soon. Roles are namespaces, meaning they can allow actions within a given namespace, not the entire cluster.
+
+2) RoleBinding: The RoleBinding object does what it says on the tin. It binds a Role (defined above) to a ServiceAccount or User. As Roles are namespaced, the role mentioned in the RoleBinding configuration YAML will need to exist in the same namespace as the RoleBinding.
+
+3) ClusterRole: A ClusterRole is functionally the same as a Role, except roles are granted on a (non-namespaced) cluster level. This would be used if access is needed to cluster-level resources like nodes or resources across multiple namespaces. Again, only if this is NEEDED, with least privilege in mind.
+
+4) ClusterRoleBinding: A ClusterRoleBinding is functionally the same as a RoleBinding except it binds a ClusterRole to a ServiceAccount or user.  
+
+### 1) RBAC in context
+
+Now that we've established the different kinds of RBAC objects, let's give some more context as to where these would be used. As mentioned, roles can be bound to either ServiceAccounts or Users. ServiceAccounts will be used if we are granting authorisation to an application, e.g. an application running in a pod within the cluster or a 3rd party external service. Meanwhile, users will be used if we are granting authorisation to, you guessed it, users! Let's now look at RBAC in the context of both of these.
+
+| **Category**             | **Role/RoleBinding**                                                                 | **ClusterRole/ClusterRoleBinding**                                                             |
+|--------------------------|--------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| **ServiceAccount**        | A Role and RoleBinding allow an application/pod to perform actions on namespaced resources. For example, allowing a pod to get running pods in a namespace, with the ServiceAccount assigned to the pod. | Same as Role/RoleBinding but for actions on cluster-level resources, like a node.              |
+| **Users**                 | A user, like "Bob," is granted permissions (e.g., "get" pods) in a specific namespace, like "dev," using a Role to ensure limited access to resources within that namespace. | A user, like "Alice," who needs to perform actions at the cluster level (e.g., "create" resources across all namespaces) is granted a ClusterRole with a ClusterRoleBinding. |
+
+
+
