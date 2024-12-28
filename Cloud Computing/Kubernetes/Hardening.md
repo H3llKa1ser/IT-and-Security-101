@@ -356,5 +356,88 @@ We then want to ensure that this pod has only the permissions required to perfor
 
 #### TIP: Defining a ClusterRole/ClusterRoleBindng is almost identical, except there is no need to define a namespace and the "kind" would changed to ClusterRole/ClusterRoleBindng.
 
+## Image Scanning
+
+### Tools: Snyk https://snyk.io/
+
+#### Security Implications:
+
+1) The tools, libraries and code we use in our app may come from an untrusted source. This can lead to backdoors in your application code (intentional or otherwise), giving an attacker access.
+
+2) Official container images are often used as a base image (and built upon) when making an application. For example, if you are building a web application, you may use the Nginx base image, or if you're building a database application, you may use any of the Postgres, Nginx, MongoDB, or Redis base images. These official container images are often considered safe because…well, they're "official". However, these official container images can contain vulnerabilities, and they frequently do. Of course, non-official images and outdated images can pose security concerns as well.  
+
+3) Because of the above-mentioned security implications, it is a best security practice to minimise attack surface in your image by using only the libraries an application NEEDS and using the most lightweight base image for its intended purpose.
+
+These security implications are not to be taken lightly, as a vulnerability in your application image could be just what an attacker is looking for. An attacker could exploit this vulnerability and use it to break out the container the application is running in and access the host, wreaking havoc on the cluster and gaining access to critical cluster information such as kubelet API authentications certs/tokens. This would be a massive security incident. This is why image scanning should always be introduced into a CI/CD pipeline as a best security practice.  
+
+Image scanning tools (like Snyk) scan the image being used against a database of vulnerabilities and look for things like hard-coded secrets. With an image scanning step in place, you can rest easy knowing that what is being deployed into your cluster is secure. 
+
+## Upgrading the Cluster
+
+Keeping up to date is a general best security practice, not one specific to Kubernetes. Running an old version of Kubernetes comes with all the same security concerns; if an attacker finds a cluster running an older version node, they may know a few vulnerabilities that have since been patched. And, of course, updating a Kubernetes cluster comes with the same Stable vs Latest considerations. Stable releases have been thoroughly and fully tested (and so are generally favoured from a security perspective). However, the latest version (which will have been internally tested) will include patches for issues in the stable version. Ultimately, as long as you are at least using the stable version, you are following the best k8s security practices.
+
+#### TIP: When choosing the version to upgrade to (the latest stable version, for example), you cannot skip minor versions. For example, you cannot upgrade your cluster from version 1.21 -> 1.23 as you would be skipping minor version 1.22. So if the latest stable version were 1.23, you would have to do 1.21 -> 1.22, then 1.22 -> 1.23. 
+
+Upgrading a cluster usually falls to a DevSecOps engineer, or at the very least, a DevSecOps engineer will work alongside a DevOps engineer to ensure this is done. Due to the nature of versioning, there are constantly new versions being released, and keeping the cluster up to date can become quite a task. Because of this, teams sometimes overlook the upgrade process and fall behind on a few versions. Following best k8s security practices, your team will regularly assign you tickets to get the cluster upgraded. This will usually have to be done in the following order: 
+
+1) Upgrade (Primary) Control Plane Node (upgrading components in this order, etcd, kube-apiserver, kube-controller-manager,kube-scheduler, cloud controller manager)
+
+2) If the cluster has additional control plane nodes, upgrade those
+
+3) Upgrade worker nodes
+
+4) Upgrade clients like kubectl 
+
+5) Make changes to manifests and resources based on changes in the new version (for example, if some of your resources are using a now depreciated feature, update them to use the replacement)
+
+Here are some things to consider when upgrading the cluster: 
+
+ - More than one worker node can be upgraded at a time.
+
+ - When upgrading a Kubernetes cluster, only internal components are touched. In other words, your apps and workloads should remain untouched and unharmed. However, it is always a good practice to take a backup of important components before the upgrade, just in case. 
+
+ - Nodes need to be drained; this way, pods are evicted from the cluster and workloads are unaffected. 
+
+ - Upgrading a cluster often comes with downtime. Depending on the importance of workloads being run in the cluster, this may lead to downtime for external services (internal or external). For this reason, a downtime notification with a maintenance window attached should be sent to the affected parties.
 
 
+## Non-root container running
+
+Unless there is an operational need for it (which there almost never is), a container should be run as a non-root user. This is because if, like previously covered, your image has vulnerabilities in it and an attacker gains access to the container, you're making their life a lot easier if that container has root privileges.
+
+This can be done when defining the image. However, certain specifications in your pod configuration YAML can override this. As a DevSecOps engineer, you'll likely be reviewing your fair share of resource configurations. If you see in the spec, under “securityContext” values like runAsUser: <UID> (where the UID has root privileges) or allowPrivilegeEscalation: true, your alarm bells should be ringing. You should verify this is not required (which again, it almost never will be) and change the pod spec to look more like this:
+
+### Deny Privilege Escalation
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: example-pod
+      Namespace: example-namespace
+    spec:
+      securityContext: 
+          allowPrivilegeEscalation: false
+
+### Non Root User
+
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: example-pod
+      Namespace: example-namespace
+    spec:
+      securityContext: 
+          runAsUser:
+
+      
+## Secure Etcd
+
+As you may remember, etcd is Kubernetes' key/value store where cluster data is kept. You hear "cluster data is kept", an attacker hears "goldmine", and they're right. Changes made in the cluster (such as a pod being deleted) are then reflected in the etcd store. However, it goes both ways; if a change were made in the etcd (such as a new pod entry), that change would be reflected in the cluster. Imagine now an attacker gaining access to the etcd. Suddenly, they're not so concerned with finding ways to gain API access to the cluster, but they've found a way to bypass the API altogether. An attacker gaining full access to the etcd is one of the worst things that could happen in a Kubernetes cluster, as it is essentially unlimited access.  
+
+This brings us to some of the best security practices which should be followed to secure the etcd store: 
+
+ - Etcd can be isolated from the cluster and run separately, putting distance between the cluster and the etcd store should the cluster be breached.
+
+ - Put etcd behind a firewall, ensuring it can only be accessed via the API (going through the appropriate API request stages).
+
+ - Encrypt all etcd data, this would be done using either built-in encryption at rest mechanisms or an encryption provider. This way, if an attacker was able to access the etcd, they wouldn't be able to decipher the contents.
