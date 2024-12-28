@@ -1,0 +1,56 @@
+# Microservices Architecture
+
+## Microservice definition:
+
+A microservice architecture refers to the software being broken up into smaller independent services which communicate using APIs.
+
+As covered, a microservices architecture involves separating parts of an application into microservices (which run as containerised workloads) instead of having a single piece of code (known as a monolithic architecture). Let’s consider a few examples. A streaming company like Netflix (an early adopter of this style of architecture) may choose to split their application into microservices like: Streaming, Recommendations, Profiles, and Catalogue Query. An online storefront, such as Amazon, may have microservices like WebApp, Basket, Orders, and Product Query.
+
+## Microservices Architecture Problems
+
+### 1) Securing Pod-to-Pod Communication
+
+A typical microservices architecture will be set up as follows: a client will connect to the Kubernetes cluster using HTTPS, will hit the load balancer, which will then forward the request to the ingress controller also using HTTPS. Likely there will be a firewall protecting the cluster as well. However, from this point onwards, once we are inside the cluster, pod-to-pod communication is done using HTTP or some other insecure protocol. In other words, the cluster itself is protected, but once inside, there is insecure, unencrypted traffic. 
+
+This has certain implications for an on-premises network; it would not be following best practices, but the implications are worse when you consider a cloud deployment, which microservice architectures frequently are. Cloud Service Providers provide multiple AZ (Availability Zones) to ensure the uptime of your application; if one AZ goes down, another one remains up. Because of this, some services in your cluster may be running on different AZ, meaning unencrypted communication between services could be intercepted by an eavesdropper. It’s for this reason traffic between services should be encrypted using mTLS.
+
+### 1.1) mTLS 
+
+mTLS (Mutual Transport Layer Security) provides mutual authentication, ensuring that both sides of a connection are authenticated using certificates. As you know, when using TLS (transport layer security), a server has a TLS certificate and a public/private key pair. However, the client does not. In mTLS, on the other hand, both client and server have a certificate and authentication using a public/private key pair. Another noteworthy difference is that with mTLS, the organisation that is implementing it acts as its own CA (certificate authority) instead of having an external organisation validate its identity
+
+### Example
+
+Let's consider this example of microservices architecture. Each of our microservices is running inside of a pod. Each one will have its own business logic, aka functionality, which is its purpose in our application. Then, our microservices will talk to each other; for example, one of our employees may connect to the WebApp service, which will talk to the Results service, which, when logged, will communicate with the DB. For this, each microservice will need to know the endpoint of all the microservices it talks to; this is known as communication configuration. Above, we discussed the importance of having pod-to-pod communication secured using mTLS; for this, the microservice will need to have the security logic included as well. For a microservice to be robust, it will need to include some kind of retry logic, which retries a connection if the microservice it communicates with is down, for example. As well as all this, service monitoring is frequently needed to gain business insights into microservice usage and performance as well as tracing data, which can be useful in troubleshooting contexts. Put all of this together, and suddenly, your microservice isn’t looking so micro. 
+
+All of this non-business logic needs to be added to each microservice/application, which can lead to the developers spending all of their time on these configurations instead of the actual application development itself. On top of this, the manual configuration of this non-business logic, sometimes across different teams (with different dev teams assigned to certain microservices), can lead to misconfigurations, which is especially concerning in a security context. This is where Service Meshes come in.
+
+### 2) Service Meshes
+
+All of the issues outlined in the previous task can be solved with one convenient and efficient solution: a service mesh. A service mesh is a dedicated infrastructure layer that can be used to control and manage service-to-service communication. This task will explain how this is done and how it solves the problems outlined in the previous task. Truly, a DevSecOps engineer's best friend. Given the issue that was established, having all of this additional logic and configurations to develop on top of the business logic on a service-to-service basis can be a lot of work. Would it not then make sense to separate the business logic of the microservice from all of the other logic and configurations and have this be handled separately and repeatedly across all microservices? This is exactly what can be achieved using a service mesh.
+
+A service mesh achieves this by extracting all of the non-business logic and configurations and having them run in its own proxy in parallel to the microservice, called a sidecar. A sidecar conjures up images of those motorbikes with a little comportment attached to its side; this, in essence, is how we define a sidecar in tech. The motorbike is the primary application, and the sidecar is a service or process deployed in parallel, which supports the primary application. In this case, the sidecar is being used as a proxy.  Proxies are commonly used in security, with a regularly used example being an employee accessing a webpage via their workstation. This request would first be received by their company's web proxy; it would have to pass the proxy's security checks before being forwarded to the web server. The server would then return the page to the web proxy, where it would again need to pass security checks before finally being forwarded to the employee. 
+
+In a service mesh, these sidecar proxies are used, forming their own infrastructure layer where requests between microservices can be routed. In other words, all security logic, communication configuration, retry logic, service monitoring, and tracing are taken care of by this sidecar proxy. They are called sidecars because they run alongside the microservice, which contains the actual business logic. These interconnected sidecar proxies form a mesh network. 
+
+The example microservice architectures discussed in earlier tasks are very primitive examples. In reality, large organisations can have very complex architectures with numerous microservices. Adding another microservice or another instance of an existing microservice can complicate the architecture even further with additional communication channels and security configurations, and as the architecture grows, finding the root cause of issues can become harder and harder. A service mesh becomes a DevSecOps engineer’s best friend by extracting this all, not only ensuring consistency and security in service-to-service communication but capturing metrics on performance can help ensure a robust architecture (e.g. the average time it takes for a service to restart can be factored into when a retry is attempted).  Taking away the need to configure all non-business logic on a per-application basis and having it all run in a sidecar proxy also makes applications more scalable.
+
+Service meshes are a win for everyone; from a developer perspective, they can focus on developing the application business logic without worrying about the need to build things like communication configuration and security logic into the app. From a security perspective you can rest assured that the service mesh is managing the secure mTLS connection between services. For this reason, when managing a microservices architecture in Kubernetes, a service mesh should always be considered.  
+
+### 3) Service Mesh Architecture
+
+#### Technologies: Istio, Linkerd, Hashicorp Consul
+
+Essentially, Service Mesh is a concept, and Istio is one of the technologies we can use to achieve this (other implementations include Linkerd and Hashicorp Consul). A popular choice for implementing a Service Mesh in a Kubernetes microservices architecture, it has a security-by-default security model, making it ideal for DevSecOps engineers looking to deploy security-conscious applications. In this task, we will break down Istio architecture to give you a better understanding of how a Service Mesh works within a Kubernetes cluster.  Istio architecture is logically split into two sections: the Data Plane and the Control Plane. We will now define each of these sections and how they work, but at a high level, the Data Plane is a collection of intelligent proxies deployed as sidecars, and the Control Plane is responsible for the management and configuration of these proxies.
+
+### 3.1) Envoy Proxies (Data Plane)
+
+It was mentioned that, in a service mesh, all of the non-business logic is extracted and run as a side care proxy in parallel to the service. In Istio (and many other service mesh implementations), this is achieved using Envoy. Envoy is an open source, high-performance edge and service proxy that is used in this instance to manage inbound and outbound traffic between services. These envoy proxies interact with network traffic and allow features such as mTLS encryption between services, as has been configured. The communication between these envoy proxies form the data plane, one of two architecture planes in Istio.
+
+### 3.2) Istiod (Control Plane)
+
+Istiod is the name of the component that makes up the Control Plane. Istiod allows for service discovery, configuration and certificate management. This component is responsible for taking the high-level routing rules that have been defined and turning them into envoy-specific configurations. These configurations are then injected into the sidecar proxies at runtime. This component is also able to abstract platform-specific (for example, Kubernetes) service discovery mechanisms and turn them into a standard format that can be consumed by the Envoy API. So when a new Service is spun up in your Kubernetes cluster, the control plane will detect and inject an envoy sidecar proxy to run alongside it. 
+
+It’s worth noting that prior to v1.5, the Istio control plane was made up of multiple components (Pilot, Citadel, Mixer, and Gallery). However, now all of these components were combined into a single Istiod component. This made it easier for users to configure/operate. I am pointing this out because some other resources are outdated and refer to the control plane being made up of these components. 
+
+Combining the Data Plane and the Control Plane, we get a complete Istio architecture. The control plane is responsible for configuration, discovery, and certificates and propagates all running services with an envoy sidecar proxy, a network that communicates with mesh traffic forming the data plane. 
+
