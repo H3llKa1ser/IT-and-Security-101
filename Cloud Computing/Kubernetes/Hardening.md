@@ -249,5 +249,36 @@ When Kubernetes then receives an API request (to create, update or delete resour
         apiVersions: ["v1"]
         resources: ["pods"]
 
-Admission controllers are yet another tool in your DevSecOps arsenal. They can be used to harden Kubernetes clusters to ensure that authorised requests are checked against and security best practices are enforced. 
+Admission controllers can be used to harden Kubernetes clusters to ensure that authorised requests are checked against and security best practices are enforced. 
     
+## Network Policies
+
+
+A NetworkPolicy is a Kubernetes resource which is used to limit what Kubernetes entity (service/endpoint) a pod can communicate with. They are deployed at a namespace level so that traffic can be restricted between namespaced resources (such as pods) or between namespaces themself.  Here is an example of how we can define a NetworkPolicy to restrict traffic so the database only accepts ingress traffic from port 8080 (the API): 
+
+    apiVersion: networking.k8s.io/v1
+    kind: NetworkPolicy
+    metadata:
+      name: db-ingress-policy #policy name
+    spec:
+      podSelector:
+        matchLabels:
+          app: database #label of app you want to protect
+      policyTypes:
+      - Ingress
+      ingress:
+      - from:
+        - podSelector:
+            matchLabels:
+              app: api #label of app you want to allow traffic from
+        ports:
+        - protocol: TCP
+          port: 8080 #port you want to allow traffic on
+
+
+
+We define the app we want to protect under the spec:PodSelector:matchLabels:app field (this will match the app's label defined in the database service spec). Since we only want to let traffic into this database (and not out), we set the spec:policyTypes field to simply "Ingress" However, if we were allowing for both, we would also include "Egress". Finally under the spec:ingress field we declare which service we want to accept traffic from and on what port (and which protocol). You then apply this NetworkPolicy YAML as you would any other configuration using the
+
+    kubectl apply -f <network-policy-name>.yaml 
+
+command, and there you have it! You have restricted network traffic into your database service. Note that defining NetworkPolicies in all namespaces implements CIS security benchmark 5.3.2.
