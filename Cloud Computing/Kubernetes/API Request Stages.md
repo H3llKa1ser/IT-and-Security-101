@@ -10,15 +10,15 @@ Authenticating an API request can be done in multiple ways. These include method
 
 Once the requester's identity has been authenticated, it needs to be determined if this user/ServiceAccount is allowed to make this request (e.g., access this resource). For example, does user example-user have sufficient permissions to delete pod example-pod. The request needs to be authorised. Kubernetes has four authorisation modes. One commonly used is RBAC. There are three other authorisation modes:
 
-1) Node authorisation
+#### 1) Node authorisation
 
 A Kubernetes cluster has a kubelet process running in each node. This process communicates with the API. This authorisation method is used to authorise requests made by kublet processes. It is not intended for user authorisation.
  
-2) ABAC (Attribute Based Access Control)
+#### 2) ABAC (Attribute Based Access Control)
 
  ABAC is similar to RBAC, but instead of granting authorisation based on roles, it grants access based on Attributes. These attributes include user attributes (such as name, position, clearance level, etc.), resource attributes (creation date, resource owner, resource group) or environmental attributes (such as the time and location from which the resource is being accessed). ABAC allows for a very granular level of access control; for example, you could allow a user to access a resource from one location (an office) but not another (their home). However, implementing this for a growing user base can quickly become complex, and the maintenance of ABAC policies can become difficult. This is often cited as a reason RBAC is favoured over ABAC for organisations: its implementation simplicity.
  
-3) Webhook
+#### 3) Webhook
 
 Another authorisation method is delegating the authorisation to an external http service (known as a webhook).  A webhook allows a user/organisation to define custom logic for authorisation and have API requests authorised using this logic. This is useful for organisations with more complex authorisation requirements or ones that want to defer to an external service (like Active Directory or LDAP, etc) to make authorisation decisions. The webhook would then send back a response based on the outcome.
 
