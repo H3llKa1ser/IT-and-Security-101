@@ -133,3 +133,49 @@ With either of those authentication methods implemented, the kublet component wi
 
 Within a Kubernetes cluster, there are many components. These components need to communicate; Kubernetes is entirely API driven, meaning restricting this communication (who can access it, what they can do) should be the first line of defence. One way in which we can secure API traffic is through encryption.
 
+### 1) Understanding Kubernetes API communication
+
+Kubernetes expects all API communication in the cluster to be encrypted by default, with most installation methods supporting the creation and distribution of certificates to cluster components. Before implementing TLS encryption and distributing the certificates, we should establish if a component acts as a client or a server (or both) when communicating in the cluster. Understanding this will help determine which certificate should be generated for each component.
+
+### 2) Certificate Generation and Implementation in Kubernetes
+
+That's Kubernetes API communication in a nutshell; it can be a lot, but understanding these components and the nature of their communication is key to being able to secure it. With this foundational understanding, you can start creating your certificates. First, you would generate a CA (Certificate Authority) cert, which must be present on each component to validate the certificates received. Then, each of the components identified above, such as a client or a server, would need a certificate generated for them. Note that in the case of the kube-apiserver which acts as a server and a client, you can choose to use the same certificates for all communication or to make separate certificates for server communication, etcd client communication and kubelet client communication). 
+
+The certificate creation step would be done using a tool like OpenSSL to first generate the CA certificate, then generate a certificate for each of the components using the following steps:
+
+1) Generate a private key
+
+       openssl genrsa --out ca.key 2048
+
+2) Generate a CSR (Certificate Signing Request)
+
+       openssl req --new --key ca.key --subj "/CN=192.168.0.100" --out ca.csr
+
+3) Generate certificate (signing with CA cert and private key)
+
+       openssl x509 --req --in ca.csr --signkey ca.key --out ca.crt --days 365
+
+#### Some further considerations need to be made when, for example, dealing with components like kube-apiserver, which has alternate names (so we can connect to it using alternate routes such as kubernetes.default and kubernetes.default.svc, etc.), but generally, these steps can be followed to generate certs for each of the components.
+
+https://blog.yarsalabs.com/kubernetes-cluster-from-scratch-part2/
+
+Once the certificates have been generated, the corresponding Kubernetes components need to be configured for use. This is done by adding these configurations to the component YAML file. Here is an example of a code block from the kube-apiserver config YAML could look like with certs generated and defined:
+
+    spec:
+      containers:
+      - command:
+        - kube-apiserver
+        - --*******************
+        - --*******************
+        - --client-ca-file=/var/lib/certs/ca.crt
+        - --etcd-cafile=/var/lib/certs/etcd/ca.crt
+        - --etcd-certfile=/var/lib/certs/apiserver-etcd-client.crt
+        - --etcd-keyfile=/var/lib/certs/apiserver-etcd-client.key
+        - --kubelet-client-certificate=/var/lib/certs/apiserver-kubelet-client.crt
+        - --kubelet-client-key=/var/lib/certs/apiserver-kubelet-client.key
+        - --proxy-client-cert-file=/var/lib/certs/front-proxy-client.crt
+        - --proxy-client-key-file=/var/lib/certs/front-proxy-client.key
+   
+
+Implementing TLS encryption like this will implement CIS security benchmarks 1.2.24 - 27, hardening the cluster even further. However, note that when these certificates have been created and distributed, they have a validity date. This means that, at some point, these certificates will have to be rotated. As you can probably tell, this process can become quite time-consuming. To help with this, Kubernetes made the Kubernetes Certificate API. This API can be used to create CSRs and have them approved to generate certificates. In a production environment, these actions will likely be protected by RBAC having ClusterRoles for users to create CSRs and for admins to approve CSRs. 
+
