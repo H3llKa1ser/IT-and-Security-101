@@ -132,3 +132,53 @@ Now that stages and levels have been defined, we are going to take a look at how
               - "RequestReceived"
    
     
+Note that the “rule” field must be contained in an audit policy for it to be valid. All rules defined under that field are then evaluated in a top-down order.  
+
+Lets now consider some best practices to consider when defining audit policies:
+
+ - For sensitive resources (anything containing security-sensitive information, such as secrets or config maps), log only at the Metadata level; otherwise, the sensitive information will be included in the audit log.
+
+ - Read-only URLs should generally not be logged. Given the context for why we want our audit logs (trying to find information about security-relevant events such as a resource change), read-only URLs are unlikely to be involved, so not logging them can reduce the volume of logs, making it significantly easier to find the information we want.
+
+ - A general best practice is to log all (non-read-only URL) resources at least at a Metadata level, and if a resource is critical, it should be logged at a RequestResponse level (unless sensitive information is contained). Below is an example audit policy that logs all resources at a Metadata level.
+
+       # Log all requests at the Metadata level.
+       apiVersion: audit.k8s.io/v1
+       kind: Policy
+       rules:
+       - level: Metadata
+
+Here is an example of what an audit log may look like when capturing a pod creation event:
+
+
+    {
+      "kind": "Event",
+      "apiVersion": "audit.k8s.io/v1",
+      "level": "Request",
+      "auditID": "3928b929-4c7d—8243-e5ea-4fc57cfd5c9a",
+      "stage": "ResponseComplete",
+      "requestURI": "/api/v1/namespaces/default/pods",
+      "verb": "create",
+      "user": {
+        "username": "system:serviceaccount:default:example-suspicious-user",
+        "groups": [
+          "system:serviceaccounts",
+          "system:serviceaccounts:default",
+          "system:authenticated"
+        ]
+      },
+      "sourceIPs": [],
+      "userAgent": "kubectl/v1.18.0 (linux/amd64) kubernetes/9e99141",
+      "objectRef": {
+        "resource": "pods",
+        "namespace": "default",
+        "name": "my-pod"
+      },
+      "responseStatus": {
+        "code": 201
+      },
+      "requestReceivedTimestamp": "2024-07-18T10:15:30.000Z",
+      "stageTimestamp": "2024-07-18T10:15:31.000Z"
+    }
+
+Another thing to consider as a DevSecOps engineer is that they need to be secured once these audit logs are captured. Audit logs, once captured, can be secured using methods such as secure transmission (ensuring TLS is enabled) and access control (restricting access to audit logs using RBAC). That does it in terms of a general overview of Kubernetes auditing and how it can be used to detect certain activity across our cluster at runtime.
