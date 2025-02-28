@@ -30,3 +30,28 @@ Microsoft manages Azure VMware Solution to meet performance, availability, secur
 
 The VMware vSphere clusters are built from bare-metal Azure hosts. These clusters are deployed and managed through the Azure portal, the Azure CLI, or PowerShell. All provisioned private clouds have the standard supported versions of VMware vCenter Server, vSAN, vSphere, and NSX included and fully licensed. If you choose the service for your company, you can gain elasticity with the ability to add and remove capacity (compute, network, and storage resources) on demand.
 
+## Key features
+
+Azure VMware Solution provides a comprehensive VMware environment in Azure. It enables your organization to:
+
+Use existing VMware solution investments: There's no need to reskill and learn new tools because the underlying products are the standard VMware vSphere and vCenter products. You can manage your VMware environments without the need to retrain staff or refactor the underlying hypervisors.
+
+Create operational consistency for admins: Operational consistency is created for admins because you continue to use VMware solutions for resources running on Azure, including vSphere Client and NSX Manager. Admins have direct access to VMware solution interfaces. The Azure portal is used only for deployment and management operations.
+
+Maintain operational consistency for the business: The service can reduce change management and maintain operational consistency for the business. You can use all of your organization's existing investments in:
+
+ - Training
+
+ - Process management
+
+ - Change management
+
+ - Tooling
+
+You can accelerate migration and minimize downtime by using the latest VMware Hybrid Cloud Extension (HCX) Enterprise functionality for large-scale, live migration from on-premises to Azure.
+
+Have a single point of support: Azure VMware Solution is Microsoft developed, operated, and supported. Microsoft is the first and only contact and coordinates support with VMware as required.
+
+Avoid licensing complexity: You work with a single vendor for licensing and resource consumption. You can track VMware product licensing directly with resource nodes as they're deployed and decommissioned.
+
+Maximize the value of existing Windows Server and SQL Server licenses: You can use Azure Hybrid Benefit for both Windows Server and SQL Server to bring existing licenses to Azure and reduce costs.
