@@ -60,3 +60,9 @@ Maximize the value of existing Windows Server and SQL Server licenses: You can u
 
 Azure VMware Solution gives customers options for migrating their VMware vSphere environment to the cloud at their own pace. Administrators use a single Azure portal interface with no connection to any third-party services. They develop cloud skills over time as they become familiar with Azure.
 
+## Continuity of operations
+
+Azure VMware Solution provides infrastructure high availability and modernization with well-managed Azure infrastructure designed for end-to-end high availability. The service has built-in redundancy with no single point of failure.
+
+With Azure VMware Solution, you can deploy VMware solution resources on Azure for a primary or secondary on-demand recovery site to provide business continuity for on-premises datacenter resources.
+
