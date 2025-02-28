@@ -55,3 +55,8 @@ Have a single point of support: Azure VMware Solution is Microsoft developed, op
 Avoid licensing complexity: You work with a single vendor for licensing and resource consumption. You can track VMware product licensing directly with resource nodes as they're deployed and decommissioned.
 
 Maximize the value of existing Windows Server and SQL Server licenses: You can use Azure Hybrid Benefit for both Windows Server and SQL Server to bring existing licenses to Azure and reduce costs.
+
+## Integration with native Azure services
+
+Azure VMware Solution gives customers options for migrating their VMware vSphere environment to the cloud at their own pace. Administrators use a single Azure portal interface with no connection to any third-party services. They develop cloud skills over time as they become familiar with Azure.
+
