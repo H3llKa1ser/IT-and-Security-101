@@ -6,6 +6,6 @@ Azure PowerShell is a shell with which developers, DevOps, and IT professionals 
 
 2) The deployment of an entire infrastructure, which might contain dozens or hundreds of resources, from imperative code.
 
-3) Capturing the commands in a script makes the process repeatable and automatable.
+Capturing the commands in a script makes the process repeatable and automatable.
 
 In addition to be available via Azure Cloud Shell, you can install and configure Azure PowerShell on Windows, Linux, and Mac platforms.
