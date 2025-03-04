@@ -45,3 +45,17 @@ Some common examples or use cases for virtual machines include:
 
 4) During disaster recovery: As with running certain types of applications in the cloud and extending an on-premises network to the cloud, you can get significant cost savings by using an IaaS-based approach to disaster recovery. If a primary datacenter fails, you can create VMs running on Azure to run your critical applications and then shut them down when the primary datacenter becomes operational again.
 
+## Move to the cloud with VMs
+
+VMs are also an excellent choice when you move from a physical server to the cloud (also known as lift and shift). You can create an image of the physical server and host it within a VM with little or no changes. Just like a physical on-premises server, you must maintain the VM: you’re responsible for maintaining the installed OS and software.
+
+##VM Resources
+
+When you provision a VM, you’ll also have the chance to pick the resources that are associated with that VM, including:
+
+1) Size (purpose, number of processor cores, and amount of RAM)
+
+2) Storage disks (hard disk drives, solid state drives, etc.)
+
+3) Networking (virtual network, public IP address, and port configuration)
+
