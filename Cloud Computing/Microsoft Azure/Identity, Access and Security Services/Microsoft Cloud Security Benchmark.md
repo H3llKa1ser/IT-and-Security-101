@@ -162,4 +162,12 @@ GCP guidance: Many GCP services support TLS authentication by default. For servi
 
 | CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s) | PCI-DSS ID(s) v3.2.1 |
 |----------------------|-----------------------|---------------------|
-|  12.5          | IA-2,, IA-4, IA-8 | N/A           |
+|  12.5          | IA-2, IA-4, IA-8 | N/A           |
+
+
+Security principle: Use single sign-on (SSO) to simplify the user experience for authenticating to resources including applications and data across cloud services and on-premises environments.
+
+Azure guidance: Use Microsoft Entra ID for workload application access (customer facing) access through Microsoft Entra ID single sign-on (SSO), reducing the need for duplicate accounts. Microsoft Entra ID provides identity and access management to Azure resources (in the management plane, including CLI, PowerShell, the portal), cloud applications, and on-premises applications.
+
+Microsoft Entra ID also supports SSO for enterprise identities such as corporate user identities, as well as external user identities from trusted third-party and public users.
+
