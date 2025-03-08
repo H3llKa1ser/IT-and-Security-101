@@ -140,4 +140,26 @@ Use Policy Intelligence to understand and recognize suspicious activity for serv
 
 | CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s) | PCI-DSS ID(s) v3.2.1 |
 |----------------------|-----------------------|---------------------|
-| N/A          | IA-9 | N/A           |
+| N/A          | IA-9                           | N/A           |
+
+Security principle: Authenticate remote servers and services from your client side to ensure you are connecting to trusted server and services. The most common server authentication protocol is Transport Layer Security (TLS), where the client-side (often a browser or client device) verifies the server by verifying the server’s certificate was issued by a trusted certificate authority.
+
+#### NOTE: Mutual authentication can be used when both the server and the client authenticate one another.
+
+Azure guidance: Many Azure services support TLS authentication by default. For services that don't support TLS authentication by default, or support disabling TLS, ensure it is always enabled to support the server/client authentication. Your client application should also be designed to verify server/client identity (by verifying the server’s certificate issued by a trusted certificate authority) in the handshake stage.
+
+Services such as API Management and API Gateway supports TLS mutual authentication.
+
+AWS guidance: Many AWS services support TLS authentication by default. For services that don't support TLS authentication by default, or support disabling TLS, ensure it is always enabled to support the server/client authentication. Your client application should also be designed to verify server/client identity (by verifying the server’s certificate issued by a trusted certificate authority) in the handshake stage.
+
+#### NOTE: Services such as API Gateway supports TLS mutual authentication.
+
+GCP guidance: Many GCP services support TLS authentication by default. For services that don't support this by default or support disabling TLS, ensure it is always enabled to support the server/client authentication. Your client application should also be designed to verify server/client identity (by verifying the server’s certificate issued by a trusted certificate authority) in the handshake stage.
+
+#### NOTE: Services such as Cloud Load Balancing support TLS mutual authentication.
+
+### IM-5: Use single sign-on (SSO) for application access
+
+| CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s) | PCI-DSS ID(s) v3.2.1 |
+|----------------------|-----------------------|---------------------|
+|  12.5          | IA-2,, IA-4, IA-8 | N/A           |
