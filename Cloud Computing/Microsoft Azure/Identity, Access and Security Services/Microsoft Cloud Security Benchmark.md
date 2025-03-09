@@ -171,3 +171,85 @@ Azure guidance: Use Microsoft Entra ID for workload application access (customer
 
 Microsoft Entra ID also supports SSO for enterprise identities such as corporate user identities, as well as external user identities from trusted third-party and public users.
 
+AWS guidance: Use AWS Cognito to manage acccess to your customer-facing applications workloads through single sign-on (SSO) to allow customers to bridge their third-party identities from different identity providers.
+
+For SSO access to the AWS native resources (including AWS console access or service management and data plane level access), use AWS Single Sign-On to reduce the need for duplicate accounts.
+
+AWS SSO also allows you to bridge corporate identities (such as identities from Microsoft Entra ID) with AWS identities, as well as external user identities from trusted third-party and public users.
+
+GCP guidance: Use Google Cloud Identity to manage access to your customer facing workload application through Google Cloud Identity Single Sign-On, reducing the need for duplicate accounts. Google Cloud Identity provides identity and access management to GCP (in the management plane including Google Cloud CLI, Console access), cloud applications, and on-premises applications.
+
+Google Cloud Identity also supports SSO for enterprise identities such as corporate user identities from Microsoft Entra ID or Active Directory, as well as external user identities from trusted third-party and public users. GCP implementation and additional context:
+
+### IM-6: Use strong authentication controls
+
+| CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s) | PCI-DSS ID(s) v3.2.1 |
+|----------------------|-----------------------|---------------------|
+| 6.3, 6.4          | AC-2, AC-3, IA-2, IA-5, IA-8 | 7.2, 8.2, 8.3, 8.4           |
+
+Security principle: Enforce strong authentication controls (strong passwordless authentication or multi-factor authentication) with your centralized identity and authentication management system for all access to resources. Authentication based on password credentials alone is considered legacy, as it is insecure and does not stand up to popular attack methods.
+
+When deploying strong authentication, configure administrators and privileged users first, to ensure the highest level of the strong authentication method, quickly followed by rolling out the appropriate strong authentication policy to all users.
+
+#### NOTE: If legacy password-based authentication is required for legacy applications and scenarios, ensure password security best practices such as complexity requirements, are followed.
+
+Azure guidance: Microsoft Entra ID supports strong authentication controls through passwordless methods and multi-factor authentication (MFA).
+
+1) Passwordless authentication: Use passwordless authentication as your default authentication method. There are three options available in passwordless authentication: Windows Hello for Business, Microsoft Authenticator app phone sign-in, and FIDO2 security keys. In addition, customers can use on-premises authentication methods such as smart cards.
+
+2) Multi-factor authentication: Azure MFA can be enforced on all users, select users, or at the per-user level based on sign-in conditions and risk factors. Enable Azure MFA and follow Microsoft Defender for Cloud identity and access management recommendations for your MFA setup.
+
+If legacy password-based authentication is still used for Microsoft Entra ID authentication, be aware that cloud-only accounts (user accounts created directly in Azure) have a default baseline password policy. And hybrid accounts (user accounts that come from on-premises Active Directory) follow the on-premises password policies.
+
+For third-party applications and services that may have default IDs and passwords, you should disable or change them during initial service setup.
+
+AWS guidance: AWS IAM supports strong authentication controls through multi-factor authentication (MFA). MFA can be enforced on all users, select users, or at the per-user level based on defined conditions.
+
+If you use corporate accounts from a third-party directory (such as Windows Active Directory) with AWS identities, follow the respective security guidance to enforce strong authentication. Refer to the Azure Guidance for this control if you use Microsoft Entra ID to manage AWS access.
+
+#### NOTE: For third-party applications and AWS services that may have default IDs and passwords, you should disable or change them during initial service setup.
+
+GCP guidance: Google Cloud Identity supports strong authentication controls through multi-factor authentication (MFA). MFA can be enforced on all users, select users, or at the per-user level based on defined conditions. To protect Cloud Identity (and Workspace) super admin accounts, consider using security keys and the Google Advanced Protection Program for maximum security.
+
+If you use corporate accounts from a third-party directory (such as Windows Active Directory) with Google Cloud identities, follow the respective security guidance to enforce strong authentication. Refer to the Azure Guidance for this control if you use Microsoft Entra ID to manage Google Cloud access.
+
+Use Identity-Aware Proxy to establish a central authorization layer for applications accessed by HTTPS, so you can use an application-level access control model instead of relying on network-level firewalls.
+
+#### NOTE: For third-party applications and GCP services that may have default IDs and passwords, you should disable or change them during the initial service setup.
+
+### IM-7: Restrict resource access based on conditions
+
+| CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s) | PCI-DSS ID(s) v3.2.1 |
+|----------------------|-----------------------|---------------------|
+| 3.3, 6.4, 13.5         | AC-2, AC-3, AC-6 | 7.2           |
+
+Security principle: Explicitly validate trusted signals to allow or deny user access to resources, as part of a zero-trust access model. Signals to validate should include strong authentication of user account, behavioral analytics of user account, device trustworthiness, user or group membership, locations and so on.
+
+Azure guidance: Use Microsoft Entra ID conditional access for more granular access controls based on user-defined conditions, such as requiring user logins from certain IP ranges (or devices) to use MFA. Microsoft Entra ID Conditional Access allows you to enforce access controls on your organization’s apps based on certain conditions.
+
+Define the applicable conditions and criteria for Microsoft Entra ID conditional access in the workload. Consider the following common use cases:
+
+1) Requiring multi-factor authentication for users with administrative roles.
+
+2) Requiring multi-factor authentication for Azure management tasks.
+
+3) Blocking sign-ins for users attempting to use legacy authentication protocols.
+
+4) Requiring trusted locations for Microsoft Entra ID Multi-Factor Authentication registration.
+
+5) Blocking or granting access from specific locations.
+
+6) Blocking risky sign-in behaviors.
+
+7) Requiring organization-managed devices for specific applications.
+
+#### NOTE: Granular authentication session management controls can also be implemented through Microsoft Entra ID conditional access policy, such as sign-in frequency and persistent browser session.
+
+AWS guidance: Create IAM policy and define conditions for more granular access controls based on user-defined conditions, such as requiring user logins from certain IP ranges (or devices) to use multi-factor authentication. Condition settings may include single or multiple conditions as well as logics.
+
+Policies can be defined from six different dimensions: identity-based policies, resource-based policies, permissions boundaries, AWS Organizations service control policy (SCP) , Access Control Lists(ACL), and session policies.
+
+GCP guidance: Create and define IAM Conditions for more granular attribute-based access controls based on user-defined conditions, such as requiring user logins from certain IP ranges (or devices) to use multi-factor authentication. Condition settings may include single or multiple conditions as well as logic.
+
+Conditions are specified in the role bindings of a resource's allow policy. Condition attributes are based on the requested resource—for example, its type or name—or on details about the request—for example, its timestamp or destination IP address.
+
