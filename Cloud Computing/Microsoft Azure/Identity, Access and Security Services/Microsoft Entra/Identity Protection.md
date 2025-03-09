@@ -54,3 +54,22 @@ Identity Protection requires users be assigned one or more of the following role
 | Global Reader        | Read-only access to Identity Protection                                                         | N/A                                     |
 | User Administrator   | Reset user passwords                                                                          | N/A                                     |
 
+Currently, the Security Operator role can't access the Risky sign-ins report.
+
+Conditional Access administrators can create policies that factor in user or sign-in risk as a condition.
+
+## License requirements
+
+Using this feature requires Microsoft Entra ID P2 licenses.
+
+| Capability | Details | Microsoft Entra ID Free / Microsoft 365 Apps | Microsoft Entra ID P1 | Microsoft Entra ID P2 |
+|------------|---------|----------------------------------------------|------------------------|------------------------|
+| **Risk policies** | Sign-in and user risk policies (via Identity Protection or Conditional Access) | No | No | Yes |
+| **Security reports** | Overview | No | No | Yes |
+|  | Risky users | Limited Information. Only users with medium and high risk are shown. No details drawer or risk history. | Limited Information. Only users with medium and high risk are shown. No details drawer or risk history. | Full access |
+|  | Risky sign-ins | Limited Information. No risk detail or risk level is shown. | Limited Information. No risk detail or risk level is shown. | Full access |
+|  | Risk detections | No | Limited Information. No details drawer. | Full access |
+| **Notifications** | Users at risk detected alerts | No | No | Yes |
+|  | Weekly digest | No | No | Yes |
+| **MFA registration policy** |  | No | No | Yes |
+
