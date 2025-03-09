@@ -73,3 +73,4 @@ Using this feature requires Microsoft Entra ID P2 licenses.
 |  | Weekly digest | No | No | Yes |
 | **MFA registration policy** |  | No | No | Yes |
 
+To make use of workload identity risk, including the Risky workload identities and Workload identity detections tab in the Risk detections panes in the admin center, you must have Workload Identities Premium licensing.
