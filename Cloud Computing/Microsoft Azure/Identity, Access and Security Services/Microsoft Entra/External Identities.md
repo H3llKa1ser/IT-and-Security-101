@@ -141,3 +141,50 @@ The following table compares the scenarios you can enable with External ID.
 | **Company branding** | The default state for the authentication experience is a Microsoft look and feel. Administrators can customize the guest sign-in experience with their company branding. | The default branding for the external tenant is neutral and doesn't include any existing Microsoft branding. Administrators can customize the branding for the organization or per application. [Learn more](https://learn.microsoft.com/). |
 | **Microsoft cloud settings** | Supported. | Not applicable. |
 | **Entitlement management** | Supported. | Not applicable. |
+
+
+## Related Technologies
+
+There are several Microsoft Entra technologies that are related to collaboration with external users and organizations. As you design your External ID collaboration model, consider these other features.
+
+## B2B Direct Connect
+
+B2B direct connect lets you create two-way trust relationships with other Microsoft Entra organizations to enable the Teams Connect shared channels feature. This feature allows users to seamlessly sign in to Teams shared channels for chat, calls, file-sharing, and app-sharing. When two organizations mutually enable B2B direct connect, users authenticate in their home organization and receive a token from the resource organization for access. Unlike B2B collaboration, B2B direct connect users aren't added as guests to your workforce directory. 
+
+Once you set up B2B direct connect with an external organization, the following Teams shared channels capabilities become available:
+
+1) A shared channel owner can search within Teams for allowed users from the external organization and add them to the shared channel.
+
+2) External users can access the Teams shared channel without having to switch organizations or sign in with a different account. From within Teams, the external user can access files and apps through the Files tab. The shared channel’s policies determine the user’s access.
+
+You use cross-tenant access settings to manage trust relationships with other Microsoft Entra organizations and define inbound and outbound policies for B2B direct connect.
+
+Licensing and billing are based on monthly active users (MAU). 
+
+## Azure Active Directory B2C
+
+Azure Active Directory B2C (Azure AD B2C) is Microsoft's legacy solution for customer identity and access management. Azure AD B2C includes a separate consumer-based directory that you manage in the Azure portal through the Azure AD B2C service. Each Azure AD B2C tenant is separate and distinct from other Microsoft Entra ID and Azure AD B2C tenants. The Azure AD B2C portal experience is similar to Microsoft Entra ID, but there are key differences, such as the ability to customize your user journeys using the Identity Experience Framework.
+
+## Microsoft Entra entitlement management for business guest sign-up
+
+As an inviting organization, you might not know ahead of time who the individual external collaborators are who need access to your resources. You need a way for users from partner companies to sign themselves up with policies that you control. To enable users from other organizations to request access, you can use Microsoft Entra entitlement management to configure policies that manage access for external users. Upon approval, these users will be provisioned with guest accounts and assigned to groups, apps, and SharePoint Online sites.
+
+## Microsoft Entra Microsoft Graph API for B2B collaboration
+
+Microsoft Graph APIs are available for creating and managing External ID features.
+
+1) Cross-tenant access settings API: The Microsoft Graph cross-tenant access API lets you programmatically create the same B2B collaboration and B2B direct connect policies that are configurable in the Azure portal. Using the API, you can set up policies for inbound and outbound collaboration. For example, you can allow or block features for everyone by default and limit access to specific organizations, groups, users, and applications. The API also allows you to accept MFA and device claims (compliant claims and Microsoft Entra hybrid joined claims) from other Microsoft Entra organizations.
+
+2) B2B collaboration invitation manager: The Microsoft Graph invitation manager API is available for building your own onboarding experiences for business guests. You can use the create invitation API to automatically send a customized invitation email directly to the B2B user, for example. Or your app can use the inviteRedeemUrl returned in the creation response to craft your own invitation (through your communication mechanism of choice) to the invited user.
+
+## Conditional Access
+
+Organizations can enforce Conditional Access policies for external B2B collaboration and B2B direct connect users in the same way that they're enabled for full-time employees and members of the organization. For Microsoft Entra cross-tenant scenarios, if your Conditional Access policies require MFA or device compliance, you can now trust MFA and device compliance claims from an external user's home organization. When trust settings are enabled, during authentication, Microsoft Entra ID checks a user's credentials for an MFA claim or a device ID to determine if the policies were already met. If so, the external user is granted seamless sign-on to your shared resource. Otherwise, an MFA or device challenge is initiated in the user's home tenant.
+
+## Multitenant applications
+
+A multitenant organization is an organization that has more than one instance of Microsoft Entra ID. There are various reasons for multi-tenancy. For example, your organization might span multiple clouds or geographical boundaries.
+
+Multitenant organizations use a one-way synchronization service in Microsoft Entra ID, called cross-tenant synchronization. Cross-tenant synchronization enables seamless collaboration for a multitenant organization. It improves user experience and ensures that users can access resources, without receiving an invitation email and having to accept a consent prompt in each tenant.
+
+Cross-tenant synchronization settings are configured under the Organization-specific access settings.
