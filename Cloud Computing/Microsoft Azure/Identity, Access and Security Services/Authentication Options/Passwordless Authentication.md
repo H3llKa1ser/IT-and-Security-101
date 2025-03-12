@@ -151,3 +151,52 @@ When you use PowerShell to create a CSV file with all of the existing keys, care
 
 It is safe to delete any key reported as "Orphaned"="True" in the CSV. An orphaned key is one for a device that is not longer registered in Microsoft Entra ID. If removing all Orphans still doesn't bring the User account below the limit it is necessary to look at the "DeviceId" and "CreationTime" columns to identify which keys to target for deletion. Be careful to remove any row in the CSV for keys you want to keep. Keys for any DeviceID corresponding to devices the user actively uses should be removed from the CSV before the deletion step.
 
+## Passwordless Authentication Implementation
+
+Passwords are a primary attack vector. Bad actors use social engineering, phishing, and spray attacks to compromise passwords. A passwordless authentication strategy mitigates the risk of these attacks.
+
+Microsoft offers the following three passwordless authentication options that integrate with Microsoft Entra ID:
+
+1) Microsoft Authenticator - turns any iOS or Android phone into a strong, passwordless credential by allowing users to sign into any platform or browser.
+
+2) FIDO2-compliant security keys - useful for users who sign in to shared machines like kiosks, in situations where use of phones is restricted, and for highly privileged identities.
+
+3) Windows Hello for Business - best for users on their dedicated Windows computers.
+
+The Microsoft Entra admin center has a passwordless methods wizard that will help you to select the appropriate method for each of your audiences.
+
+### Required Roles
+
+Here are the least privileged roles required for this deployment
+
+| Microsoft Entra Role            | Description                                                      |
+|---------------------------------|------------------------------------------------------------------|
+| User Administrator or Global Administrator | To implement combined registration experience.       |
+| Authentication Administrator    | To implement and manage authentication methods.              |
+| User                            | To configure Authenticator app on device, or to enroll security key device for web or Windows 10 sign-in. |
+
+As part of this deployment plan, we recommend that passwordless authentication be enabled for all privileged accounts.
+
+### Microsoft Authenticator app and security keys
+
+The prerequisites are determined by your selected passwordless authentication methods.
+
+| Prerequisite | Microsoft Authenticator | FIDO2 Security Keys |
+|-------------|------------------------|----------------------|
+| Combined registration for Microsoft Entra multifactor authentication and self-service password reset (SSPR) is enabled | ✅ | ✅ |
+| Users can perform Microsoft Entra multifactor authentication | ✅ | ✅ |
+| Users have registered for Microsoft Entra multifactor authentication and SSPR | ✅ | ✅ |
+| Users have registered their mobile devices to Microsoft Entra ID | ✅ |  |
+| Windows 10 version 1809 or higher using a supported browser like Microsoft Edge or Mozilla Firefox (version 67 or higher). Microsoft recommends version 1903 or higher for native support. |  | ✅ |
+| Compatible security keys. Ensure that you're using a Microsoft-tested and verified FIDO2 security key, or other compatible FIDO2 security key. |  | ✅ |
+
+### Windows Hello for Business
+
+The prerequisites and deployment paths for Windows Hello for Business are highly dependent on whether you're deploying in an on-premises, hybrid, or cloud-only configuration. It's also dependent on your device join strategy.
+
+Select Windows Hello for Business and complete the wizard to determine the prerequisites and deployment appropriate for your organization.
+
+![image](https://github.com/user-attachments/assets/07cab8a6-11fd-4b19-a41e-6763569a3069)
+
+The wizard will use your inputs to craft a step-by-step plan for you to follow.
+
