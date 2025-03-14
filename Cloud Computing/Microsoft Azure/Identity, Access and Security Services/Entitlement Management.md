@@ -113,3 +113,33 @@ Access packages are defined in containers called catalogs. You can have a single
 
 Using this feature requires Microsoft Entra ID Governance subscriptions for your organization's users. Some capabilities within this feature may operate with a Microsoft Entra ID P2 subscription, see the articles of each capability for more details.
 
+## Delegation and roles in entitlement management
+
+In Microsoft Entra ID, you can use role models to manage access at scale through identity governance.
+
+1) You can use access packages to represent organizational roles in your organization, such as "sales representative". An access package representing that organizational role would include all the access rights that a sales representative might typically need, across multiple resources.
+
+2) Applications can define their own roles. For example, if you had a sales application, and that application included the app role "salesperson" in its manifest, you could then include that role from the app manifest in an access package. Applications can also use security groups in scenarios where a user could have multiple application-specific roles simultaneously.
+
+3) You can use roles for delegating administrative access. If you have a catalog for all the access packages needed by sales, you could assign someone to be responsible for that catalog, by assigning them a catalog-specific role.
+
+This unit discusses how to use roles to manage aspects within Microsoft Entra entitlement management, for controlling access to the entitlement management resources.
+
+By default, users in the Global Administrator role or the Identity Governance Administrator role can create and manage all aspects of entitlement management. However, the users in these roles may not know all the situations where access packages are required. Typically it's users within the respective departments, teams, or projects who know who they're collaborating with, using what resources, and for how long. Instead of granting unrestricted permissions to non-administrators, you can grant users the least permissions they need to do their job and avoid creating conflicting or inappropriate access rights.
+
+## Delegated management of guest user lifecycle
+
+ypically, a user in a role with Guest Inviter privileges can invite individual external users to an organization, and this setting can be changed using the external collaboration settings.
+
+For managing external collaboration, where the individual external users for a collaboration project may not be known in advance, assigning users who are working with external organizations into entitlement management roles can allow them to configure catalogs, access packages and policies for their external collaboration. These configurations allow the external users they're collaborating with to request and be added to your organization's directory and access packages.
+
+1) To allow users in external directories from connected organizations to be able to request access packages in a catalog, the catalog setting of Enabled for external users needs to be set to Yes. Changing this setting can be done by an administrator or a catalog owner of the catalog.
+
+2) The access package must also have a policy set for users not in your directory. This policy can be created by an administrator, catalog owner or access package manager of the catalog.
+
+3) An access package with that policy will allow users in scope to be able to request access, including users not already in your directory. If their request is approved, or doesn't require approval, then the user will be automatically added to your directory.
+
+4) If the policy setting was for All users, and the user wasn't part of an existing connected organization, then a new proposed connected organization is automatically created. You can view the list of connected organizations and remove organizations that are no longer needed.
+
+You can also configure what happens when an external user brought in by entitlement management loses their last assignment to any access packages. You can block them from signing in to this directory, or have their guest account removed, in the settings to manage the lifecycle of external users.
+
