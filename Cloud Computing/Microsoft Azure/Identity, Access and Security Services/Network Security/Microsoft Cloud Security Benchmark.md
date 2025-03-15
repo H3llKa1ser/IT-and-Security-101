@@ -213,3 +213,48 @@ Adaptive Protection in Cloud Armor helps you prevent, detect and protect your ap
 | CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s) | PCI-DSS ID(s) v3.2.1 |
 |----------------------|----------------------|----------------------|
 |  4.4, 4.8	                | CM-2, CM-6, CM-7	                 | 4.1, A2.1, A2.2, A2.3        |
+
+Security principle: Detect and disable insecure services and protocols at the OS, application, or software package layer. Deploy compensating controls if disabling insecure services and protocols aren't possible.
+
+Azure guidance: Use Microsoft Sentinel’s built-in Insecure Protocol Workbook to discover the use of insecure services and protocols such as SSL/TLSv1, SSHv1, SMBv1, LM/NTLMv1, wDigest, weak ciphers in Kerberos, and Unsigned LDAP Binds. Disable insecure services and protocols that don't meet the appropriate security standard.
+
+#### NOTE: If disabling insecure services or protocols isn't possible, use compensating controls such as blocking access to the resources through network security group, Azure Firewall, or Azure Web Application Firewall to reduce the attack surface.
+
+AWS guidance: Enable VPC Flow Logs and use GuardDuty to analyze the VPC Flow Logs to identify the possible insecure services and protocols that don't meet the appropriate security standard.
+
+If the logs in the AWS environment can be forwarded to Microsoft Sentinel, you can also use Microsoft Sentinel's built-in Insecure Protocol Workbook to discover the use of insecure services and protocols
+
+#### NOTE: If disabling insecure services or protocols isn't possible, use compensating controls such as blocking access to the resources through security groups, AWS Network Firewall, AWS Web Application Firewall to reduce the attack surface.
+
+GCP guidance: Enable VPC Flow Logs and use BigQuery or Security Command Center to analyze the VPC Flow Logs to identify the possible insecure services and protocols that don't meet the appropriate security standard.
+
+If the logs in the GCP environment can be forwarded to Microsoft Sentinel, you can also use the Microsoft Sentinel’s built-in Insecure Protocol Workbook to discover the use of insecure services and protocols. Additional you can forward logs to Google Cloud Chronicle SIEM and SOAR and build custom rules for the same purpose.
+
+#### NOTE: If disabling insecure services or protocols isn't possible, use compensating controls such as blocking access to the resources through VPC Firewall rules and policies, or Cloud Armor to reduce the attack surface.
+
+### NS-9: Connect on-premises or cloud network privately
+
+| CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s) | PCI-DSS ID(s) v3.2.1 |
+|----------------------|----------------------|----------------------|
+| 12.7                 |    CA-3, AC-17, AC-4	              | N/A        |
+
+Security principle: Use private connections for secure communication between different networks, such as cloud service provider datacenters and on-premises infrastructure in a colocation environment.
+
+Azure guidance: For lightweight site-to-site or point-to-site connectivity, use Azure virtual private network (VPN) to create a secure connection between your on-premises site or end-user device and the Azure virtual network.
+
+For enterprise-level high performance connections, use Azure ExpressRoute (or Virtual WAN) to connect Azure datacenters and on-premises infrastructure in a co-location environment.
+
+When connecting two or more Azure virtual networks together, use virtual network peering. Network traffic between peered virtual networks is private and is kept on the Azure backbone network.
+
+AWS guidance: For site-to-site or point-to-site connectivity, use AWS VPN to create a secure connection (when IPsec overhead isn't a concern) between your on-premises site or end-user device to the AWS network.
+
+For enterprise-level high performance connections, use AWS Direct Connect to connect AWS VPCs and resources with your on-premises infrastructure in a co-location environment.
+
+You have the option to use VPC Peering or Transit Gateway to establish connectivity between two or more VPCs within or across regions. Network traffic between peered VPC is private and is kept on the AWS backbone network. When you need to join multiple VPCs to create a large flat subnet, you also have the option to use VPC Sharing.
+
+GCP guidance: For lightweight site-to-site or point-to-site connectivity use Google Cloud VPN.
+
+For enterprise-level high performance connections, use Google Cloud Interconnect or Partner Interconnect, to connect to Google Cloud VPCs and resources with your on-premises infrastructure in a colocation environment.
+
+You have the option to use VPC Network Peering or Network Connectivity Center to establish connectivity between two or more VPCs within or across regions. Network traffic between peered VPCs is private and is kept on the GCP backbone network. When you need to join multiple VPCs to create a large flat subnet, you also have the option to use Shared VPC
+
