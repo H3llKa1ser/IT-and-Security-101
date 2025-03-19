@@ -84,3 +84,7 @@ Specify between the HTTP and HTTPS protocols in the listener configuration.
 Support for WebSockets and HTTP/2 protocols is provided natively, and WebSocket support is enabled by default. There's no user-configurable setting to selectively enable or disable WebSocket support. Use WebSockets with both HTTP and HTTPS listeners.
 
 Use an HTTPS listener for TLS termination. An HTTPS listener offloads the encryption and decryption work to your application gateway, so your web servers aren't burdened by the overhead.
+
+## How an Application Gateway works
+
+![image](https://github.com/user-attachments/assets/b9273bf9-4c27-4c2d-8398-e45de9819189)
