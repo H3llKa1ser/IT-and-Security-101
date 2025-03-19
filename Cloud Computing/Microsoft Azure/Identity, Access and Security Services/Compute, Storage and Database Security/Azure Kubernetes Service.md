@@ -40,3 +40,14 @@ The following list describes some of the common use cases for AKS, but by no mea
 
 7) Using Windows containers on AKS: Run Windows Server containers on AKS to modernize your Windows applications and infrastructure.
 
+## Features of AKS
+
+| Feature                        | Description |
+|--------------------------------|-------------|
+| **Identity and security management** | • Enforce regulatory compliance controls using Azure Policy with built-in guardrails and internet security benchmarks. <br> • Integrate with Kubernetes RBAC to limit access to cluster resources. <br> • Use Microsoft Entra ID to set up Kubernetes access based on existing identity and group membership. |
+| **Logging and monitoring** | • Integrate with Container Insights, a feature in Azure Monitor, to monitor the health and performance of your clusters and containerized applications. <br> • Set up Network Observability and use BYO Prometheus and Grafana to collect and visualize network traffic data from your clusters. |
+| **Streamlined deployments** | • Use prebuilt cluster configurations for Kubernetes with smart defaults. <br> • Autoscale your applications using the Kubernetes Event Driven Autoscaler (KEDA). <br> • Use Draft for AKS to ready source code and prepare your applications for production. |
+| **Clusters and nodes** | • Connect storage to nodes and pods, upgrade cluster components, and use GPUs. <br> • Create clusters that run multiple node pools to support mixed operating systems and Windows Server containers. <br> • Configure automatic scaling using the cluster autoscaler and horizontal pod autoscaler. <br> • Deploy clusters with confidential computing nodes to allow containers to run in a hardware-based trusted execution environment. |
+| **Storage volume support** | • Mount static or dynamic storage volumes for persistent data. <br> • Use Azure Disks for single pod access and Azure Files for multiple, concurrent pod access. <br> • Use Azure NetApp Files for high-performance, high-throughput, and low-latency file shares. |
+| **Networking** | • Leverage Kubenet networking for simple deployments and Azure Container Networking Interface (CNI) networking for advanced scenarios. <br> • Bring your own Container Network Interface (CNI) to use a third-party CNI plugin. <br> • Easily access applications deployed to your clusters using the application routing add-on with nginx. |
+| **Development tooling integration** | • Develop on AKS with Helm. <br> • Install the Kubernetes extension for Visual Studio Code to manage your workloads. <br> • Leverage the features of Istio with the Istio-based service mesh add-on. |
