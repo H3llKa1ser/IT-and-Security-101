@@ -458,3 +458,36 @@ General guidance: Establish a policy, procedure and standard to ensure the secur
 
 The security configuration management in cloud should include the following areas:
 
+1) Define the secure configuration baselines for different resource types in the cloud, such as the web portal/console, management and control plane, and resources running in the IaaS, PaaS and SaaS services.
+Ensure the security baselines address the risks in different control areas such as network security, identity management, privileged access, data protection and so on.
+
+2) Use tools to continuously measure, audit, and enforce the configuration to prevent configuration deviating from the baseline.
+
+3) Develop a cadence to stay updated with security features, for instance, subscribe to the service updates.
+
+4) Utilize a security health or compliance check mechanism (such as Secure Score, Compliance Dashboard in Microsoft Defender for Cloud) to regularly review security configuration posture and remediate the gaps identified.
+
+The vulnerability management in the cloud should include the following security aspects:
+
+1) Regularly assess and remediate vulnerabilities in all cloud resource types, such as cloud native services, operating systems, and application components.
+
+2) Use a risk-based approach to prioritize assessment and remediation.
+
+3) Subscribe to the relevant CSPM's security advisory notices and blogs to receive the latest security updates.
+
+4) Ensure the vulnerability assessment and remediation (such as schedule, scope, and techniques) meet the compliance requirements for your organization.dule, scope, and techniques) meet the regularly compliance requirements for your organization.
+
+### GS-11: Define and implement multi-cloud security strategy
+
+| CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s) | PCI-DSS ID(s) v3.2.1 |
+|----------------------|----------------------|--------------------|
+| N/A                  | N/A                  | N/A                |
+
+General guidance: Ensure a multi-cloud strategy is defined in your cloud and security governance, risk management, and operation process which should include the following aspects:
+
+1) Multi-cloud adoption: For organizations that operate multi-cloud infrastructure and Educate your organization to ensure teams understand the feature difference between the cloud platforms and technology stack. Build, deploy, and/or migrate solutions that are portable. Allow for ease of movement between cloud platforms with minimum vendor lock-in while utilizing cloud native features adequately for the optimal result from the cloud adoption.
+
+2) Cloud and security operations: Streamline security operations to support the solutions across each cloud, through a central set of governance and management processes which share common operations processes, regardless of where the solution is deployed and operated.
+
+3) Tooling and technology stack: Choose the appropriate tooling that supports multicloud environment to help with establishing unified and centralized management platforms which may include all the security domains discussed in this security benchmark.
+
