@@ -788,3 +788,93 @@ GCP guidance: By default, Operations Suite Cloud Logging retains the logs for 30
 
 Use Cloud Storage for log archival from Cloud Logging and apply object lifecycle management and archival policy to the bucket. You can use Azure Storage for central log archival by transferring the files from Google Cloud Storage to Azure Storage.
 
+## Security Control: Posture and vulnerability management
+
+Posture and Vulnerability Management focuses on controls for assessing and improving cloud security posture, including vulnerability scanning, penetration testing and remediation, as well as security configuration tracking, reporting, and correction in cloud resources.
+
+### PV-4: Audit and enforce secure configurations for compute resources
+
+| CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s) | PCI-DSS ID(s) v3.2.1 |
+|----------------------|----------------------|--------------------|
+| 4.1                  | CM-2, CM-6            | 2.2                |
+
+Security principle: Continuously monitor and alert when there is a deviation from the defined configuration baseline in your compute resources. Enforce the desired configuration according to the baseline configuration by denying the non-compliant configuration or deploying a configuration in compute resources.
+
+Azure guidance: Use Microsoft Defender for Cloud and Azure Automanage Machine Configuration (formerly called Azure Policy Guest Configuration) to regularly assess and remediate configuration deviations on your Azure compute resources, including VMs, containers, and others. In addition, you can use Azure Resource Manager templates, custom operating system images, or Azure Automation State Configuration to maintain the security configuration of the operating system. Microsoft VM templates in conjunction with Azure Automation State Configuration can assist in meeting and maintaining security requirements. Use Change Tracking and Inventory in Azure Automation to track changes in virtual machines hosted in Azure, on-premises, and other cloud environments to help you pinpoint operational and environmental issues with software managed by the Distribution Package Manager. Install the Guest Attestation agent on virtual machines to monitor for boot integrity on confidential virtual machines.
+
+#### NOTE: Azure Marketplace VM images published by Microsoft are managed and maintained by Microsoft.
+
+AWS guidance: Use AWS System Manager's State Manager feature to regularly assess and remediate configuration deviations on your EC2 instances. In addition, you can use CloudFormation templates, custom operating system images to maintain the security configuration of the operating system. AMI templates in conjunction with Systems Manager can assist in meeting and maintaining security requirements.
+
+You can also centrally monitor and manage the operating system configuration drift through Azure Automation State Configuration and onboard the applicable resources to Azure security governance using the following methods:
+
+1) Onboard your AWS account into Microsoft Defender for Cloud
+
+2) Use Azure Arc for servers to connect your EC2 instances to Microsoft Defender for Cloud
+
+For workload applications running within your EC2 instances, AWS Lambda or containers environment, you may use AWS System Manager AppConfig to audit and enforce the desired configuration baseline.
+
+#### NOTE: AMIs published by Amazon Web Services in AWS Marketplace are managed and maintained by Amazon Web Services.
+
+GCP guidance: Use VM Manager and Google Cloud Security Command Center to regularly assess and remediate configuration deviation of your Compute Engine instances, Containers, and Serverless contracts. In addition, you can use Deployment Manager VM templates, custom operating system images to maintain the security configuration of the operating system. Deployment Manager VM templates in conjunction with VM Manager can assist in meeting and maintaining security requirements.
+
+You can also centrally monitor and manage the operating system configuration drift through Azure Automation State Configuration and onboard the applicable resources to Azure security governance using the following methods:
+
+1) Onboard your GCP project into Microsoft Defender for Cloud
+
+2) Use Azure Arc for servers to connect your GCP VM instances to Microsoft Defender for Cloud
+
+### PV-5: Perform vulnerability assessments
+
+| CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s) | PCI-DSS ID(s) v3.2.1 |
+|----------------------|----------------------|--------------------|
+| 5.5, 7.1, 7.5, 7.6   | RA-3, RA-5            | 6.1, 6.2, 6.6      |
+
+Security principle: Perform vulnerabilities assessment for your cloud resources at all tiers in a fixed schedule or on-demand. Track and compare the scan results to verify the vulnerabilities are remediated. The assessment should include all types of vulnerabilities, such as vulnerabilities in Azure services, network, web, operating systems, misconfigurations, and so on.
+
+Be aware of the potential risks associated with the privileged access used by the vulnerability scanners. Follow the privileged access security best practice to secure any administrative accounts used for the scanning.
+
+Azure guidance: Follow recommendations from Microsoft Defender for Cloud for performing vulnerability assessments on your Azure Virtual Machines, container images, and SQL servers. Microsoft Defender for Cloud has a built-in vulnerability scanner for virtual machines. Use a third-party solution for performing vulnerability assessments on network devices and applications (e.g., web applications)
+
+Export scan results at consistent intervals and compare the results with previous scans to verify that vulnerabilities have been remediated. When using vulnerability management recommendations suggested by Microsoft Defender for Cloud, you can pivot into the selected scan solution's portal to view historical scan data.
+
+When conducting remote scans, do not use a single, perpetual, administrative account. Consider implementing JIT (Just In Time) provisioning methodology for the scan account. Credentials for the scan account should be protected, monitored, and used only for vulnerability scanning.
+
+#### NOTE: Microsoft Defender services (including Defender for servers, containers, App Service, Database, and DNS) embed certain vulnerability assessment capabilities. The alerts generated from Azure Defender services should be monitored and reviewed together with the result from Microsoft Defender for Cloud vulnerability scanning tool.
+
+#### NOTE: Ensure you setup email notifications in Microsoft Defender for Cloud.
+
+AWS guidance: Use Amazon Inspector to scan your Amazon EC2 instances and container images residing in Amazon Elastic Container Registry (Amazon ECR) for software vulnerabilities and unintended network exposure. Use a third-party solution for performing vulnerability assessments on network devices and applications (e.g., web applications)
+
+Refer to control ES-1, "Use Endpoint Detection and Response (EDR)", to onboard your AWS account into Microsoft Defender for Cloud and deploy Microsoft Defender for servers (with Microsoft Defender for Endpoint integrated) in your EC2 instances. Microsoft Defender for servers provides a native threat and vulnerability management capability for your VMs. The vulnerability scanning result will be consolidated in the Microsoft Defender for Cloud dashboard.
+
+Track the status of vulnerability findings to ensure they are properly remediated or suppressed if they're considered false positive.
+
+When conducting remote scans, do not use a single, perpetual, administrative account. Consider implementing a temporary provisioning methodology for the scan account. Credentials for the scan account should be protected, monitored, and used only for vulnerability scanning.
+
+GCP guidance: Follow recommendations from Microsoft Defender for Cloud or/and Google Cloud Security Command Center for performing vulnerabilities assessments on your Compute Engine instances. Security Command Center has built-in vulnerabilities assessments on network devices and applications (e.g., Web Security Scanner)
+
+Export scan results at consistent intervals and compare the results with previous scans to verify that vulnerabilities have been remediated. When using vulnerabilities management recommendations suggested by Security Command Center, you can pivot into the selected scan solution’s portal to view historical scan data.
+
+### PV-6: Rapidly and automatically remediate vulnerabilities
+
+| CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s)                | PCI-DSS ID(s) v3.2.1 |
+|----------------------|-------------------------------------|--------------------|
+| 7.2, 7.3, 7.4, 7.7   | RA-3, RA-5, SI-2: FLAW REMEDIATION  | 6.1, 6.2, 6.5, 11.2 |
+
+Security principle: Rapidly and automatically deploy patches and updates to remediate vulnerabilities in your cloud resources. Use the appropriate risk-based approach to prioritize the remediation of vulnerabilities. For example, more severe vulnerabilities in a higher value asset should be addressed as a higher priority.
+
+Azure guidance: Use Azure Automation Update Management or a third-party solution to ensure that the most recent security updates are installed on your Windows and Linux VMs. For Windows VMs, ensure Windows Update has been enabled and set to update automatically.
+
+For third-party software, use a third-party patch management solution or Microsoft System Center Updates Publisher for Configuration Manager.
+
+AWS guidance: Use AWS Systems Manager - Patch Manager to ensure that the most recent security updates are installed on your operating systems and applications. Patch Manager supports patch baselines to allow you to define a list of approved and rejected patches for your systems.
+
+You can also use Azure Automation Update Management to centrally manage the patches and updates of your AWS EC2 Windows and Linux instances.
+
+For third-party software, use a third-party patch management solution or Microsoft System Center Updates Publisher for Configuration Manager.
+
+GCP guidance: Use Google Cloud VM Manager OS patch management or a third-party solution to ensure that the most recent security updates are installed on your Windows and Linux VM’s. For Windows VM’s ensure Windows Update has been enabled and set to update automatically.
+
+For third-party software, use a third-party patch management solution or Microsoft System Center Updates Publisher for configuration management.
+
