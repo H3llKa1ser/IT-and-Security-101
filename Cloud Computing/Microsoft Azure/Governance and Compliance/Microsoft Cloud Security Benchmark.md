@@ -491,3 +491,192 @@ General guidance: Ensure a multi-cloud strategy is defined in your cloud and sec
 
 3) Tooling and technology stack: Choose the appropriate tooling that supports multicloud environment to help with establishing unified and centralized management platforms which may include all the security domains discussed in this security benchmark.
 
+## Security Control: Identity management
+
+Identity Management covers controls to establish a secure identity and access controls using identity and access management systems, including the use of single sign-on, strong authentications, managed identities (and service principals) for applications, conditional access, and account anomalies monitoring.
+
+### IM-8: Restrict the exposure of credentials and secrets
+
+| CIS Controls v8 ID(s)  | NIST SP 800-53 r4 ID(s) | PCI-DSS ID(s) v3.2.1 |
+|-----------------------|----------------------|--------------------|
+| 16.9, 16.12          | IA-5                 | 3.5, 6.3, 8.2      |
+
+Security principle: Ensure that application developers securely handle credentials and secrets:
+
+1) Avoid embedding the credentials and secrets into the code and configuration files
+
+2) Use key vault or a secure key store service to store the credentials and secrets
+
+3) Scan for credentials in source code.
+
+#### NOTE: This is often governed and enforced through a secure software development lifecycle (SDLC) and DevOps security process.
+
+Azure guidance: When using a managed identity is not an option, ensure that secrets and credentials are stored in secure locations such as Azure Key Vault, instead of embedding them into the code and configuration files.
+
+If you use Azure DevOps and GitHub for your code management platform:
+
+1) Implement Azure DevOps Credential Scanner to identify credentials within the code.
+
+2) For GitHub, use the native secret scanning feature to identify credentials or other form of secrets within the code.
+
+Clients such as Azure Functions, Azure Apps services, and VMs can use managed identities to access Azure Key Vault securely. See Data Protection controls related to the use of Azure Key Vault for secrets management.
+
+#### NOTE: Azure Key Vault provides automatic rotation for supported services. For secrets that cannot be automatically rotated, ensure they are manually rotated periodically and purged when no longer in use.
+
+AWS guidance: When using an IAM role for application access is not an option, ensure that secrets and credentials are stored in secure locations such as AWS Secret Manager or Systems Manager Parameter Store, instead of embedding them into the code and configuration files.
+
+Use CodeGuru Reviewer for static code analysis which can detect the secrets hard-coded in your source code.
+
+If you use the Azure DevOps and GitHub for your code management platform:
+
+1) Implement Azure DevOps Credential Scanner to identify credentials within the code.
+2) For GitHub, use the native secret scanning feature to identify credentials or other forms of secrets within the code.
+
+#### NOTE: Secrets Manager provides automatic secrets rotation for supported services. For secrets that cannot be automatically rotated, ensure they are manually rotated periodically and purged when no longer in use.
+
+GCP guidance: When using a Google-managed service account for application access is not an option, ensure that secrets and credentials are stored in secure locations such as Google Cloud's Secret Manager instead of embedding them into the code and configuration files.
+
+Use the Google Cloud Code extension on IDE's (Integrated development environment) such as Visual Studio Code to integrate secrets managed by Secret Manager into your code.
+
+If you use the Azure DevOps or GitHub for your code management platform:
+
+1) Implement Azure DevOps Credential Scanner to identify credentials within the code.
+
+2) For GitHub, use the native secret scanning feature to identify credentials or other forms of secrets within the code.
+
+#### NOTE: Set up rotation schedules for secrets stored in Secret Manager as a best practice.
+
+## Security Control: Incident response
+
+Incident Response covers controls in incident response life cycle - preparation, detection and analysis, containment, and post-incident activities, including using Azure services (such as Microsoft Defender for Cloud and Sentinel) and/or other cloud services to automate the incident response process.
+
+### IR-4: Detection and analysis - investigate an incident
+
+| CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s) | PCI-DSS ID(s) v3.2.1 |
+|----------------------|----------------------|--------------------|
+| N/A                  | IR-4                 | 12.10              |
+
+Security principle: Ensure the security operation team can query and use diverse data sources as they investigate potential incidents, to build a full view of what happened. Diverse logs should be collected to track the activities of a potential attacker across the kill chain to avoid blind spots. You should also ensure insights and learnings are captured for other analysts and for future historical reference.
+
+Use the cloud native SIEM and incident management solution if your organization does not have an existing solution to aggregate security logs and alerts information. Correlate incident data based on the data sourced from different sources to facility the incident investigations.
+
+Azure guidance: Ensure your security operations team can query and use diverse data sources that are collected from the in-scope services and systems. In addition, it sources can also include:
+
+1) Identity and access log data: Use Azure AD logs and workload (such as operating systems or application level) access logs for correlating identity and access events.
+
+2) Network data: Use network security groups' flow logs, Azure Network Watcher, and Azure Monitor to capture network flow logs and other analytics information.
+
+3) Incident related activity data of from snapshots of the impacted systems, which can be obtained through:
+
+ - The Azure Virtual Machine's snapshots capability, to create a snapshot of the running system's disk.
+
+ - The operating system's native memory dump capability, to create a snapshot of the running system's memory.
+
+ - The snapshot feature of other supported Azure services or your software's own capability, to create snapshots of the running systems.
+
+Microsoft Sentinel provides extensive data analytics across virtually any log source and a case management portal to manage the full lifecycle of incidents. Intelligence information during an investigation can be associated with an incident for tracking and reporting purposes.
+
+#### NOTE: When incident related data is captured for investigation, ensure there is adequate security in place to protect the data from unauthorized alteration, such as disabling logging or removing logs, which can be performed by the attackers during an in-flight data breach activity.
+
+AWS guidance: The data sources for investigation are the centralized logging sources that collect from the in-scope services and running systems, but can also include:
+
+1) Identity and access log data: Use IAM logs and workload (such as operating systems or application level) access logs for correlating identity and access events.
+
+2) Network data: Use VPC Flow Logs, VPC Traffic Mirrors, and Azure CloudTrail and CloudWatch to capture network flow logs and other analytics information.
+
+3) Snapshots of running systems, which can be obtained through:
+
+ - Snapshot capability in Amazon EC2(EBS) to create a snapshot of the running system's disk.
+
+ - The operating system's native memory dump capability, to create a snapshot of the running system's memory.
+
+ - The snapshot feature of the AWS services or your software's own capability, to create snapshots of the running systems.
+
+If you aggregate your SIEM related data into Microsoft Sentinel, it provides extensive data analytics across virtually any log source and a case management portal to manage the full lifecycle of incidents. Intelligence information during an investigation can be associated with an incident for tracking and reporting purposes.
+
+#### NOTE: When incident related data is captured for investigation, ensure there is adequate security in place to protect the data from unauthorized alteration, such as disabling logging or removing logs, which can be performed by the attackers during an in-flight data breach activity.
+
+GCP guidance: The data sources for investigation are the centralized logging sources that collect from the in-scope services and running systems, but can also include:
+
+1) Identity and access log data: Use IAM logs and workload (such as operating systems or application level) access logs for correlating identity and access events.
+
+2) Network data: Use VPC Flow Logs and VPC service controls to capture network flow logs and other analytics information.
+
+3) Snapshots of running systems, which can be obtained through:
+
+ - Snapshot capability in GCP VMs to create a snapshot of the running system's disk.
+
+ - The operating system's native memory dump capability, to create a snapshot of the running system's memory.
+
+ - The snapshot feature of the GCP services or your software's own capability, to create snapshots of the running systems.
+
+If you aggregate your SIEM related data into Microsoft Sentinel, it provides extensive data analytics across virtually any log source and a case management portal to manage the full lifecycle of incidents. Intelligence information during an investigation can be associated with an incident for tracking and reporting purposes.
+
+#### NOTE: When incident related data is captured for investigation, ensure there is adequate security in place to protect the data from unauthorized alteration, such as disabling logging or removing logs, which can be performed by the attackers during an in-flight data breach activity.
+
+### IR-6: Containment, eradication and recovery - automate the incident handling
+
+| CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s)     | PCI-DSS ID(s) v3.2.1 |
+|----------------------|--------------------------|--------------------|
+| N/A                  | IR-4, IR-5, IR-6         | 12.10              |
+
+Security principle: Automate the manual, repetitive tasks to speed up response time and reduce the burden on analysts. Manual tasks take longer to execute, slowing each incident and reducing how many incidents an analyst can handle. Manual tasks also increase analyst fatigue, which increases the risk of human error that causes delays and degrades the ability of analysts to focus effectively on complex tasks.
+
+Azure guidance: Use workflow automation features in Microsoft Defender for Cloud and Microsoft Sentinel to automatically trigger actions or run a playbooks to respond to incoming security alerts. Playbooks take actions, such as sending notifications, disabling accounts, and isolating problematic networks.
+
+AWS guidance: If you use Microsoft Sentinel to centrally manage your incident, you can also create automated actions or run a playbooks to respond to incoming security alerts.
+
+Alternatively, use automation features in AWS System Manager to automatically trigger actions defined in the incident response plan, including notifying the contacts and/or running a runbook to respond to alerts, such as disabling accounts, and isolating problematic networks.
+
+GCP guidance: If you use Microsoft Sentinel to centrally manage your incident, you can also create automated actions or run playbooks to respond to incoming security alerts.
+
+Alternatively, use Playbook automations in Chronicle to automatically trigger actions defined in the incident response plan, including notifying the contacts and/or running a playbook to respond to alerts.
+
+## Security Control: Logging and threat detection
+
+Logging and Threat Detection covers controls for detecting threats on cloud, and enabling, collecting, and storing audit logs for cloud services, including enabling detection, investigation, and remediation processes with controls to generate high-quality alerts with native threat detection in cloud services; it also includes collecting logs with a cloud monitoring service, centralizing security analysis with a SIEM, time synchronization, and log retention.
+
+### LT-1: Enable threat detection capabilities
+
+| CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s)               | PCI-DSS ID(s) v3.2.1 |
+|----------------------|------------------------------------|--------------------|
+| 8.11                 | AU-3, AU-6, AU-12, SI-4           | 10.6, 10.8, A3.5    |
+
+Security principle: To support threat detection scenarios, monitor all known resource types for known and expected threats and anomalies. Configure your alert filtering and analytics rules to extract high-quality alerts from log data, agents, or other data sources to reduce false positives.
+
+Azure guidance: Use the threat detection capability of Microsoft Defender for Cloud for the respective Azure services.
+
+For threat detection not included in Microsoft Defender services, refer to Microsoft Cloud Security Benchmark service baselines for the respective services to enable the threat detection or security alert capabilities within the service. Ingest alerts and log data from Microsoft Defender for Cloud, Microsoft 365 Defender, and log data from other resources into your Azure Monitor or Microsoft Sentinel instances to build analytics rules, which detect threats and create alerts that match specific criteria across your environment.
+
+For Operational Technology (OT) environments that include computers that control or monitor Industrial Control System (ICS) or Supervisory Control and Data Acquisition (SCADA) resources, use Microsoft Defender for IoT to inventory assets and detect threats and vulnerabilities.
+
+For services that do not have a native threat detection capability, consider collecting the data plane logs and analyze the threats through Microsoft Sentinel.
+
+AWS guidance: Use Amazon GuardDuty for threat detection which analyzes and processes the following data sources: VPC Flow Logs, AWS CloudTrail management event logs, CloudTrail S3 data event logs, EKS audit logs, and DNS logs. GuardDuty is capable of reporting on security issues such as privilege escalation, exposed credential usage , or communication with malicious IP addresses, or domains.
+
+Configure AWS Config to check rules in SecurityHub for compliance monitoring such as configuration drift, and create findings when needed.
+
+For threat detection not included in GuardDuty and SecurityHub, enable threat detection or security alert capabilities within the supported AWS services. Extract the alerts to your CloudTrail, CloudWatch, or Microsoft Sentinel to build analytics rules, which hunt threats that match specific criteria across your environment.
+
+You can also use Microsoft Defender for Cloud to monitor certain services in AWS such as EC2 instances.
+
+For Operational Technology (OT) environments that include computers that control or monitor Industrial Control System (ICS) or Supervisory Control and Data Acquisition (SCADA) resources, use Microsoft Defender for IoT to inventory assets and detect threats and vulnerabilities.
+
+GCP guidance: Use the Event Threat Detection in Google Cloud Security Command Center for threat detection using log data such as Admin Activity, GKE Data Access, VPC Flow Logs, Cloud DNS, and Firewall Logs.
+
+Additionally use the Security Operations suite for the modern SOC with Chronicle SIEM and SOAR. Chronicle SIEM and SOAR provides threat detection, investigation, and hunting capabilities
+
+You can also use Microsoft Defender for Cloud to monitor certain services in GCP such as Compute VM instances.
+
+For Operational Technology (OT) environments that include computers that control or monitor Industrial Control System (ICS) or Supervisory Control and Data Acquisition (SCADA) resources, use Microsoft Defender for IoT to inventory assets and detect threats and vulnerabilities.
+
+### LT-3: Enable logging for security investigation
+
+| CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s)               | PCI-DSS ID(s) v3.2.1 |
+|----------------------|------------------------------------|--------------------|
+| 8.2, 8.5, 8.12       | AU-3, AU-6, AU-12, SI-4           | 10.1, 10.2, 10.3    |
+
+Security principle: Enable logging for your cloud resources to meet the requirements for security incident investigations and security response and compliance purposes.
+
+Azure guidance: Enable logging capability for resources at the different tiers, such as logs for Azure resources, operating systems and applications inside in your VMs and other log types.
+
