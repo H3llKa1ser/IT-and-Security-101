@@ -448,3 +448,13 @@ For third-party solutions, ensure the signatures are updated in the third-party 
 
 Governance and Strategy provides guidance for ensuring a coherent security strategy and documented governance approach to guide and sustain security assurance, including establishing roles and responsibilities for the different cloud security functions, unified technical strategy, and supporting policies and standards.
 
+### GS-5: Define and implement security posture management strategy
+
+| CIS Controls v8 ID(s) | NIST SP 800-53 r4 ID(s)                                         | PCI-DSS ID(s) v3.2.1                               |
+|----------------------|----------------------------------------------------------------|------------------------------------------------|
+| 4.1, 4.2            | CA-1, CA-8, CM-1, CM-2, CM-6, RA-1, RA-3, RA-5, SI-1, SI-2, SI-5 | 1.1, 1.2, 2.2, 6.1, 6.2, 6.5, 6.6, 11.2, 11.3, 11.5 |
+
+General guidance: Establish a policy, procedure and standard to ensure the security configuration management and vulnerability management are in place in your cloud security mandate.
+
+The security configuration management in cloud should include the following areas:
+
