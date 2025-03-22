@@ -88,3 +88,85 @@ The Basic page includes basic information about the DCR.
 
 #### NOTE: This option sets the kind attribute in the DCR. There are other values that can be set for this attribute, but they aren't available in the portal.
 
+## Data collection rules (DCRs) in Azure Monitor
+
+Data collection rules (DCRs) are part of an ETL-like data collection process that improves on legacy data collection methods for Azure Monitor. This process uses a common data ingestion pipeline for all data sources and a standard method of configuration that's more manageable and scalable than previous collection methods.
+
+Specific advantages of DCR-based data collection include the following:
+
+1) Consistent method for configuration of different data sources.
+
+2) Ability to apply a transformation to filter or modify incoming data before it's sent to a destination.
+
+3) Scalable configuration options supporting infrastructure as code and DevOps processes.
+
+4) Option of edge pipeline in your own environment to provide high-end scalability, layered network configurations, and periodic connectivity.
+
+## Viewing DCRs
+
+Data collection rules (DCRs) are stored in Azure so they can be centrally deployed and managed like any other Azure resource. They provide a consistent and centralized way to define and customize different data collection scenarios.
+
+View all of the DCRs in your subscription from the Data Collection Rules option of the Monitor menu in the Azure portal. Regardless of the method used to create the DCR and the details of the DCR itself, all DCRs in the subscription are listed in this screen.
+
+## Replaced legacy data collection methods
+
+The DCR collection process has either replaced or is in the process of replacing other data collection methods in Azure Monitor. The following table lists the legacy methods with their DCR-based replacements.
+
+| **Legacy Method**         | **DCR Method**            | **Description** |
+|---------------------------|---------------------------|-----------------|
+| **Log Analytics agent**   | **Azure Monitor agent**   | The Azure Monitor agent is now used to monitor VMs and Kubernetes clusters supporting VM insights and Container insights. |
+| **Diagnostic settings (metrics only)** | **Metrics export** | Diagnostic settings are still currently used to collect resource logs from Azure resources. Platform metrics can now be collected using Metrics export. |
+| **Data Collector API**    | **Logs ingestion API**    | The Logs ingestion API is used to send data to a Log Analytics workspace from any REST client. It replaces the Data Collector API, which was less secure and less functional. |
+
+## Azure Monitor Pipeline
+
+The data collection process supported by DCRs is based on the Azure Monitor pipeline which provides a common processing path for incoming data. The cloud pipeline is one component of the Azure Monitor pipeline (see Edge pipeline below for the other component) and is automatically available in your Azure subscription as part of the Azure Monitor platform. It requires no configuration, and doesn't appear in the Azure portal.
+
+Each data collection scenario using the Azure Monitor pipeline is defined in a DCR that provides instructions for how the cloud pipeline should process data it receives. Depending on the scenario, DCRs will specify all or some of the following:
+
+1) Data to collect and send to the pipeline.
+
+2) Schema of the incoming data.
+
+3) Transformations to apply to the data before it's stored.
+
+4) Destination where the data should be sent.
+
+## Using a DCR
+
+There are two fundamental ways that DCRs are specified for a particular data collection scenario as described in the following sections. Each scenario will support one of these methods, but not both.
+
+#### NOTE: Workspace transformation DCRs are active as soon as they're created. They don't use either of the methods described in this section.
+
+### Data collection rule associations (DCRA)
+
+Data collection rule associations (DCRAs) are used to associate a DCR with a monitored resource. This is a many-to-many relationship, where a single DCR can be associated with multiple resources, and a single resource can be associated with multiple DCRs. This allows you to develop a strategy for maintaining your monitoring across sets of resources with different requirements.
+
+For example, the following diagram illustrates data collection for Azure Monitor agent (AMA) running on a virtual machine. When the agent is installed, it connects to Azure Monitor to retrieve any DCRs that are associated with it. In this scenario, the DCRs specify events and performance data to collect, which the agent uses to determine what data to collect from the machine and send to Azure Monitor. Once the data is delivered, the cloud pipeline runs any transformation specified in the DCR to filter and modify the data and then sends the data to the specified workspace and table.
+
+### Direct ingestion
+
+With direct ingestion, a particular DCR is specified to process the incoming data. For example, the following diagram illustrates data from a custom application using Logs ingestion API. Each API call specifies the DCR that will process its data. The DCR understands the structure of the incoming data, includes a transformation that ensures that the data is in the format of the target table, and specifies a workspace and table to send the transformed data.
+
+## Transformations
+
+Transformations are KQL queries included in a DCR that run against each record sent to the cloud pipeline. They allow you to modify incoming data before it's stored in Azure Monitor or sent to another destination. You may filter unneeded data to reduce your ingestion costs, remove sensitive data that shouldn't be persisted in the Log Analytics workspace, or format data to ensure that it matches the schema of its destination. Transformations also enable advanced scenarios such as sending data to multiple destinations or enriching data with additional information.
+
+## Edge Pipeline
+
+The edge pipeline extends the Azure Monitor pipeline to your own data center. It enables at-scale collection and routing of telemetry data before it's delivered to the cloud pipeline. Unlike the cloud pipeline, the edge pipeline is optional and requires configuration.
+
+Specific use cases for Azure Monitor edge pipeline are:
+
+1) Scalability. The edge pipeline can handle large volumes of data from monitored resources that may be limited by other collection methods such as Azure Monitor agent.
+
+2) Periodic connectivity. Some environments may have unreliable connectivity to the cloud, or may have long unexpected periods without connection. The edge pipeline can cache data locally and sync with the cloud when connectivity is restored.
+
+3) Layered network. In some environments, the network is segmented and data cannot be sent directly to the cloud. The edge pipeline can be used to collect data from monitored resources without cloud access and manage the connection to Azure Monitor in the cloud.
+
+## DCR regions
+
+Data collection rules are available in all public regions where Log Analytics workspaces and the Azure Government and China clouds are supported. Air-gapped clouds aren't yet supported. A DCR gets created and stored in a particular region and is backed up to the paired-region within the same geography. The service is deployed to all three availability zones within the region. For this reason, it's a zone-redundant service, which further increases availability.
+
+Single region data residency is a preview feature to enable storing customer data in a single region and is currently only available in the Southeast Asia Region (Singapore) of the Asia Pacific Geo and the Brazil South (Sao Paulo State) Region of the Brazil Geo. Single-region residency is enabled by default in these regions.
+
