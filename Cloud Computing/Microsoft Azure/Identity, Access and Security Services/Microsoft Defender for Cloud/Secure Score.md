@@ -26,3 +26,9 @@ Preview recommendations are marked with:
 
 ![image](https://github.com/user-attachments/assets/2663edbc-c7f2-468f-bd51-0bfe462bdfe0)
 
+## Improve your secure score
+
+To improve your secure score, remediate security recommendations from your recommendations list. You can remediate each recommendation manually for each resource or use the Fix option (when available) to resolve an issue on multiple resources quickly.
+
+You can also configure the Enforce and Deny options on the relevant recommendations to improve your score and make sure your users don't create resources that negatively impact your score.
+
