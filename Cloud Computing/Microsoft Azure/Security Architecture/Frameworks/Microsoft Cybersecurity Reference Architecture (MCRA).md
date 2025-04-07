@@ -77,3 +77,32 @@ Any devices and customer accounts that interact with the resources
  
  - Secure backups against sabotage - Ensure that backups are protected against deliberate attacker erasure or encryption, which is a common attacker tactic. If your backups are not secure, you may not be able to recover critical business operations without paying for the ransom/extortion payment. Paying a ransom is much slower, has no guarantee of success, and incurs potential liability and other risks.
 
+## Attack protection with MCRA
+
+All of the security best practices in the MCRA and MCSB are intended to reduce risk of attackers succeeding. Several MCRA best practices focus directly on the security operations aspects of external attacks - detect, respond, recover.
+
+These best practices include:
+
+1) Continuous improvement toward complete coverage - Always work to continuously improve coverage of the attack chain to areas with no visibility and highly vulnerable  areas with no preventive controls.
+
+2) Balanced control investments - Balance investments into security controls across the full lifecycle of identify, protect, detect, respond, and recover
+
+3) From SIEM for everything to "XDR + SIEM" - The primary tool for security operations to detect attacks and respond to them has been the Security Information and Event Management (SIEM) capability. Once introduced, extended detection and response (XDR) tools quickly became indispensable for the platforms they monitor (starting with Endpoint Detection and Response (EDR) for endpoints) because they quickly reduce false positives. These tools don't cover the breadth of sources that the SIEM does, but they greatly simplify and increase effectiveness of detection and response for technologies covered by XDR. Security  best practices then shifted to reflect the strengths of SIEM (broad visibility and correlation across all tools and technology) and of XDR tooling (simple high quality threat detection on covered assets), and the collective need for both types of tooling in security operations.
+
+4) SOAR Automation and Modern Analytics - Reduce the amount of manual effort in security operations by integrating the use of security orchestration, automation, and response (SOAR), Machine Learning (ML), and User Entity Behavioral Analytics (UEBA) technologies. SOAR technology automates manual efforts that distract and tire human analysts during detection, investigation, and other response tasks. ML greatly improves detection by allowing computers to extend human expertise over large datasets and spot anomalies that could be attacker activity. UEBA improves detection and investigation by profiling the individual user accounts and entities that attackers compromise, rather than attempting to find patterns in the full set of raw log data.
+5) Adapt processes to Operational Technology (OT) - Adjust your tools and processes to the constraints of OT environments as you integrate them. These environments prioritize safety and often have older systems that don't have patches available and may crash from an active scan. Focusing on approaches like passive network detections for threats and isolation of systems is often the best approach.
+
+6) Build appropriate controls for Insider Risk as a distinct focus area - While some of the objectives for insider risk attacks are  similar to external attacks, reducing insider risk is different than reducing risk from external attacks. Insider risks can include elements like:
+
+ - Leaks of sensitive data and data spillage
+
+ - Confidentiality violations
+
+ - Intellectual property (IP) theft
+
+ - Fraud
+
+ - Insider trading
+
+ - Regulatory compliance violations
+  
