@@ -1,4 +1,4 @@
-# Business Continuity and Disaster Recovery (BCDR)
+# Ransomware Mitigation Strategies
 
 Microsoft best practices for ransomware protection are based on a three step approach:
 
