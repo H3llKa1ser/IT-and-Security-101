@@ -1,4 +1,4 @@
-# Active Directory Domain Services (ADDS) Hardening
+# Active Directory Domain Services (AD DS) Hardening
 
 The following table provides a summary of the recommendations provided in this document for securing an AD DS installation. Some best practices are strategic in nature and require comprehensive planning and implementation projects; others are tactical and focused on specific components of Active Directory and related infrastructure.
 
