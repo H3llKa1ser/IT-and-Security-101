@@ -24,3 +24,16 @@ At a high level, there are two types of identities: human and machine/non-human 
 
 ![image](https://github.com/user-attachments/assets/3a585001-15b8-475d-ae2d-d7702e4b8a1a)
 
+## Supported scenarios
+
+Here are some ways you can use workload identities:
+
+1) Access Microsoft Entra ID protected resources without needing to manage secrets for workloads that run on Azure using managed identity.
+
+2) Access Microsoft Entra ID protected resources without needing to manage secrets for supported scenarios such as GitHub Actions, workloads running on Kubernetes, or workloads running in compute platforms outside of Azure using workload identity federation.
+
+3) Review service principals and applications that are assigned to privileged directory roles in Microsoft Entra ID using access reviews for service principals.
+
+4) Apply Conditional Access policies to service principals owned by your organization using Conditional Access for workload identities, and Continuous access evaluation for workload identities.
+
+5) Secure workload identities with Identity Protection.
