@@ -18,6 +18,20 @@
 
 #### 3) 192.168.0.0 to 192.168.255.254
 
+The Internet Engineering Task Force (IETF) specified the following ranges for private networks in RFC 1918:
+
+### Class A Private Range: 10.0.0.0 to 10.255.255.255 (a single /8 network)
+
+Real-world example: Large corporate networks or data centers often utilize the 10.0.0.0/8 range because it offers a huge number of available host addresses (over 16 million), allowing for extensive internal segmentation and growth without running out of addresses. For instance, a global bank's data center might use 10.1.0.0/16 for its servers, 10.2.0.0/16 for its network infrastructure, and 10.3.0.0/16 for development environments.
+
+### Class B Private Range: 172.16.0.0 to 172.31.255.255 (16 contiguous /16 networks, from 172.16.0.0/16 to 172.31.0.0/16)
+
+Real-world example: Mid-sized to large organizations or institutions like universities often use ranges within 172.16.0.0/12. A university might use 172.16.0.0/20 for its administrative offices, 172.17.0.0/20 for student dormitories, and 172.18.0.0/20 for research labs, offering a good balance of network segments and hosts per segment.
+
+### Class C Private Range: 192.168.0.0 to 192.168.255.255 (256 contiguous /24 networks, from 192.168.0.0/24 to 192.168.255.0/24)
+
+Real-world example: This is the most common private range seen in home and small office networks. Your home Wi-Fi router, for instance, typically assigns addresses like 192.168.1.x or 192.168.0.x to your devices. A small business with a few departments might use 192.168.1.0/24 for sales, 192.168.2.0/24 for administration, and 192.168.3.0/24 for its server segment.
+
 ## Loopback Address
 
 ### The first octet of 127 is reserved for a computer’s loopback address. Usually, the address 127.0.0.1 is used. The loopback address is used to provide a mechanism for self-diagnosis and troubleshooting at the machine level. This mechanism allows a network administrator to treat a local machine as if it were a remote machine and ping the network interface to establish whether it is operational.
