@@ -42,15 +42,62 @@
 
 # Network Classes
 
-### Class A - Range of First Octet: 1-126 - Number of Octets for Network Number: 1  - Number of Hosts in Network: 16,777,214
+### Class A Addresses
 
-### Class -B - Range of First Octet: 128-191 - Number of Octets for Network Number: 2  - Number of Hosts in Network: 65,534
+First Octet Range: 1-126
 
-### Class C - Range of First Octet: 192-239 - Number of Octets for Network Number: 3  - Number of Hosts in Network: 254
+Binary Pattern: Always starts with 0
 
-### Class D - Range of First Octet: 224-239 - Number of Octets for Network Number: Multicast
+Structure: The first octet defines the network portion, and the remaining three octets (24 bits) define the host portion.
 
-### Class D - Range of First Octet: 240-255 - Number of Octets for Network Number: Reserved
+Default Subnet Mask: 255.0.0.0
+
+Characteristics: Class A networks are designed for very large organizations that require a massive number of hosts. They provide 126 possible networks, with each network capable of supporting approximately 16 million hosts (2^24 - 2, subtracting addresses for network ID and broadcast).
+
+Example 1 (Real-world - historical): A large telecommunications company or an early internet backbone provider might have been assigned a Class A network like 10.0.0.0/8. (Note: 10.0.0.0/8 is a private range today, but it illustrates a Class A structure).
+
+### Class B Addresses
+
+
+First Octet Range: 128-191
+
+Binary Pattern: Always starts with 10
+
+Structure: The first two octets define the network portion, and the remaining two octets (16 bits) define the host portion.
+
+Default Subnet Mask: 255.255.0.0
+
+Characteristics: Class B networks are suitable for medium to large-sized organizations. They offer approximately 16,384 possible networks, with each network capable of supporting around 65,534 hosts (2^16 - 2).
+
+Example 1 (Real-world - historical): A university or a large corporation with multiple departments might have been assigned a Class B network like 172.16.0.0/16. (Note: 172.16.0.0/16 is a private range today).
+
+### Class C Addresses
+
+First Octet Range: 192-223
+
+Binary Pattern: Always starts with 110
+
+Structure: The first three octets define the network portion, and the last octet (8 bits) defines the host portion.
+
+Default Subnet Mask: 255.255.255.0
+
+Characteristics: Class C networks are ideal for small networks. They provide approximately 2 million possible networks, but each network can only support a maximum of 254 hosts (2^8 - 2).
+
+Example 1 (Real-world): A small business or a home office network. Your home router likely assigns addresses in a Class C range like 192.168.1.0/24.
+
+### Other IP Address Classes (D and E)
+
+#### Class D (Multicast):
+
+First Octet Range: 224-239
+
+Purpose: These addresses are used for multicasting, where a single packet is sent to a select group of destinations simultaneously, rather than a single host (unicast) or all hosts (broadcast). Examples include video conferencing and streaming. They do not represent individual networks or hosts.
+
+#### Class E (Experimental):
+
+First Octet Range: 240-255
+
+Purpose: Reserved for experimental use and not available for general assignment.
 
 ## Classes Inter-Domain Routing (CIDR): Allows flexibility to access more IP addresses
 
