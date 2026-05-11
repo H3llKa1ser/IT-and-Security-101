@@ -206,6 +206,3 @@ Modbus in a nutshell:
 └── Status: Still one of the most deployed ICS protocols globally
 ```
 
----
-
-Would you like to go deeper into any aspect — such as **Modbus security attacks**, **packet analysis with Wireshark**, **writing Modbus scripts**, or **setting up a Modbus lab environment**?
