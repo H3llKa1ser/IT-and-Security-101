@@ -449,6 +449,4 @@ DNP3 in a nutshell:
 └── Status: Dominant protocol in electric utility SCADA globally
 ```
 
----
 
-Would you like to go deeper into any specific area — such as **DNP3 attack techniques**, **packet analysis with Wireshark**, **DNP3-SA internals**, or **setting up a DNP3 lab environment**?
