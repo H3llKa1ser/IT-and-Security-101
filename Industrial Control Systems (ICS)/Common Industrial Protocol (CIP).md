@@ -1,7 +1,5 @@
 # Common Industrial Protocol (CIP)
 
-# CIP — Common Industrial Protocol
-
 ## Overview
 
 **CIP (Common Industrial Protocol)** is an **open, industrial communication protocol** developed and maintained by **ODVA (Open DeviceNet Vendors Association)**, founded in **1995**. CIP provides a **unified communication architecture** for industrial automation devices — from simple sensors and actuators up to complex controllers and enterprise systems.
